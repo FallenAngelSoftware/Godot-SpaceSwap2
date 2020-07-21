@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/WinTurbo2BGM.ogg-635188c94c4373f36f3b31ad1212ac08.oggstr"
+
+[deps]
+
+source_file="res://media/music/WinTurbo2BGM.ogg"
+dest_files=[ "res://.import/WinTurbo2BGM.ogg-635188c94c4373f36f3b31ad1212ac08.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

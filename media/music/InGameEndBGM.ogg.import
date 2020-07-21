@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/InGameEndBGM.ogg-8475bfce2a7c6702d5e7378ca1c96c75.oggstr"
+
+[deps]
+
+source_file="res://media/music/InGameEndBGM.ogg"
+dest_files=[ "res://.import/InGameEndBGM.ogg-8475bfce2a7c6702d5e7378ca1c96c75.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

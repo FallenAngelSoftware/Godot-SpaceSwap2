@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PlayfieldRise.ogg-e593d40162d60588046377cb09d44435.oggstr"
+
+[deps]
+
+source_file="res://media/sound/PlayfieldRise.ogg"
+dest_files=[ "res://.import/PlayfieldRise.ogg-e593d40162d60588046377cb09d44435.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

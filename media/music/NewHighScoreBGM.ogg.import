@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NewHighScoreBGM.ogg-06392f4276a8389edebea6c70e875ca5.oggstr"
+
+[deps]
+
+source_file="res://media/music/NewHighScoreBGM.ogg"
+dest_files=[ "res://.import/NewHighScoreBGM.ogg-06392f4276a8389edebea6c70e875ca5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

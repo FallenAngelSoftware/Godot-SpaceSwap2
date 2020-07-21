@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SwapPieces.ogg-51a21fb53fe5a486a0ce33e2377678ab.oggstr"
+
+[deps]
+
+source_file="res://media/sound/SwapPieces.ogg"
+dest_files=[ "res://.import/SwapPieces.ogg-51a21fb53fe5a486a0ce33e2377678ab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

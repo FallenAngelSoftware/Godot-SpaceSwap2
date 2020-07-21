@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MenuClick.ogg-96c65d0c5e07d2a5a8847fc1c046dc6c.oggstr"
+
+[deps]
+
+source_file="res://media/sound/MenuClick.ogg"
+dest_files=[ "res://.import/MenuClick.ogg-96c65d0c5e07d2a5a8847fc1c046dc6c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
