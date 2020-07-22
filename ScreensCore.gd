@@ -1,5 +1,5 @@
+# "ScreensCore.gd"
 extends Node
-
 
 const FadingIdle			= -1
 const FadingFromBlack		= 0
@@ -7,9 +7,7 @@ const FadingToBlack			= 1
 var ScreenFadeStatus
 var ScreenFadeTransparency
 
-
 var ScreenDisplayTimer
-
 
 const GodotScreen			= 0
 const FASScreen				= 1
@@ -51,8 +49,15 @@ func ApplyScreenFadeTransition():
 		else:
 			ScreenFadeTransparency = 1.0
 			ScreenFadeStatus = FadingFromBlack
+			
+			print(VisualsCore.Texts.TextImage.size())
+
 			VisualsCore.MoveAllActiveSpritesOffScreen()
 			VisualsCore.DeleteAllTexts()
+			InterfaceCore.InitializeButtons()
+
+			print(VisualsCore.Texts.TextImage.size())
+
 			ScreenToDisplay = ScreenToDisplayNext
 	
 	VisualsCore.Sprites.SpriteImage[0].modulate = Color(1.0, 1.0, 1.0, ScreenFadeTransparency)
@@ -62,6 +67,7 @@ func ApplyScreenFadeTransition():
 
 func DisplayFASScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
+		VisualServer.set_default_clear_color(Color(0.3, 0.3, 0.3, 1.0))
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Space Swap™ 2''", 0, 16, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 16+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -71,8 +77,8 @@ func DisplayFASScreen():
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Target Platforms:", 0, 16+(30*4), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Windows/macOS/Linux Desktop/Laptop HTML5 Internet Browsers -", 0, 16+(30*5), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Android Smartphone/Tablets -", 0, 16+(30*6), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Nintendo Switch/Switch Light Consoles/Handhelds -", 0, 16+(30*7), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Android Smartphones/Tablets -", 0, 16+(30*6), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "- Nintendo Switch/Switch Lite Consoles/Handhelds -", 0, 16+(30*7), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 16+(30*8), 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
@@ -83,7 +89,7 @@ func DisplayFASScreen():
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 16+(30*12), 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "THIS IS ONLY A DEMO!", 0, 490, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawnTextChangeScaleRotation(10, 3.3, 3.3, 0)
+		VisualsCore.DrawnTextChangeScaleRotation(VisualsCore.TextCurrentIndex-1, 3.3, 3.3, 0)
 
 		VisualsCore.DrawSprite(33, VisualsCore.ScreenWidth/2, 640-48, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Click Left Mouse Button Or Press Keyboard [Spacebar] To Continue!", 0, 640-25, 1, 16+30+30, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -104,22 +110,52 @@ func DisplayFASScreen():
 #		VisualsCore.DeleteAllTexts()
 #		ScreenToDisplay = TitleScreen
 #		ScreenFadeStatus = FadingFromBlack
-
 	pass
 
 
 func DisplayTitleScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
+		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
+		
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 16, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawSprite(20, VisualsCore.ScreenWidth/2, 90, 1.75, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 160, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 596, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawSprite(20, VisualsCore.ScreenWidth/2, 82, 1.75, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+
+		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 150, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "#1 Top Player ''JeZxLee'' Scored: 10000", 0, 170, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 194, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+		var buttonY = 223
+		var buttonOffsetY = 41
+		InterfaceCore.CreateButton (0, (VisualsCore.ScreenWidth/2), (buttonY))
+		buttonY+=buttonOffsetY
+		InterfaceCore.CreateButton (1, (VisualsCore.ScreenWidth/2), (buttonY))
+		buttonY+=buttonOffsetY
+		InterfaceCore.CreateButton (2, (VisualsCore.ScreenWidth/2), (buttonY))
+		buttonY+=buttonOffsetY
+		InterfaceCore.CreateButton (3, (VisualsCore.ScreenWidth/2), (buttonY))
+		buttonY+=buttonOffsetY
+		InterfaceCore.CreateButton (4, (VisualsCore.ScreenWidth/2), (buttonY))
+		buttonY+=buttonOffsetY
+		InterfaceCore.CreateButton (5, (VisualsCore.ScreenWidth/2), (buttonY))
+		buttonY+=buttonOffsetY
+#		InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2), (buttonY))
+#		buttonY+=buttonOffsetY
+
+		VisualsCore.DrawSprite(25, VisualsCore.ScreenWidth/2, 540, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+
+		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 602, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2020 By Team ''www.FallenAngelSoftware.com''", 0, 640-19, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-
-
-
+#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+#		VisualsCore.DeleteAllTexts()
+#		ScreenToDisplay = TitleScreen
+#		ScreenFadeStatus = FadingFromBlack
 	pass
 	
 
@@ -131,7 +167,8 @@ func ProcessScreenToDisplay():
 		DisplayTitleScreen()
 
 
+	InterfaceCore.DrawAllButtons()
+
 	ApplyScreenFadeTransition()
 
 	pass
-

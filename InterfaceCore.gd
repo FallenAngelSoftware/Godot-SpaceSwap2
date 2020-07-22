@@ -1,16 +1,98 @@
+# "InterfaceCore.gd"
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var ButtonText = []
+
+class ButtonsClass:
+	var ButtonImageIndex = []
+	var ButtonTextIndex = []
+	var ButtonIndex = []
+	var ButtonScreenX = []
+	var ButtonScreenY = []
+	var ButtonAnimationTimer = []
+	var ButtonScale = []
+var Buttons = ButtonsClass.new()
+
+var NumberOfButtonsOnScreen
+var ButtonSelectedByKeyboard
 
 
-# Called when the node enters the scene tree for the first time.
+func InitializeButtons():
+	Buttons.ButtonImageIndex.clear()
+	Buttons.ButtonTextIndex.clear()
+	Buttons.ButtonIndex.clear()
+	Buttons.ButtonScreenX.clear()
+	Buttons.ButtonScreenY.clear()
+	Buttons.ButtonAnimationTimer.clear()
+	Buttons.ButtonScale.clear()
+		
+	for index in range(0, 10):
+		Buttons.ButtonImageIndex.append(40+index)
+		VisualsCore.DrawText(index, ButtonText[index], 0, -99999, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		Buttons.ButtonTextIndex.append(index)
+		Buttons.ButtonIndex.append(-1)
+		Buttons.ButtonScreenX.append(0)
+		Buttons.ButtonScreenY.append(-99999)
+		Buttons.ButtonAnimationTimer.append(-1)
+		Buttons.ButtonScale.append(1.0)
+
+	NumberOfButtonsOnScreen = 0
+	ButtonSelectedByKeyboard = 0
+
+	pass
+
+
 func _ready():
-	pass # Replace with function body.
+	ButtonText.append("START!")
+	ButtonText.append("Options")
+	ButtonText.append("How To Play")
+	ButtonText.append("High Scores")
+	ButtonText.append("About")
+	ButtonText.append("Exit")
+	ButtonText.append("Back")
+	ButtonText.append("CLEAR!")
+	ButtonText.append("BGM Test")
+	ButtonText.append("N.A.")
+
+	InitializeButtons()
+
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func CreateButton (var index, var screenX, var screenY):
+	ButtonSelectedByKeyboard = 0
+
+	Buttons.ButtonIndex[NumberOfButtonsOnScreen] = index
+	Buttons.ButtonScreenX[NumberOfButtonsOnScreen] = screenX
+	Buttons.ButtonScreenY[NumberOfButtonsOnScreen] = screenY
+	Buttons.ButtonAnimationTimer[NumberOfButtonsOnScreen] = 0
+	Buttons.ButtonScale[NumberOfButtonsOnScreen] = 1
+
+	NumberOfButtonsOnScreen+=1
+
+	pass
+
+
+func DrawAllButtons():
+	if NumberOfButtonsOnScreen == 0:  return
+		
+	for index in range(0, 10):
+		if Buttons.ButtonIndex[index] > -1:
+			VisualsCore.Sprites.SpriteImage[40+index].global_position = Vector2(Buttons.ButtonScreenX[index], Buttons.ButtonScreenY[index])
+			
+			if index == ButtonSelectedByKeyboard:
+				VisualsCore.Sprites.SpriteImage[50].global_position = Vector2((VisualsCore.ScreenWidth/2)-154, Buttons.ButtonScreenY[index])
+				VisualsCore.Sprites.SpriteImage[51].global_position = Vector2((VisualsCore.ScreenWidth/2)+154, Buttons.ButtonScreenY[index])
+
+			var textHeight = VisualsCore.Texts.TextImage[index].get_font("normal_font").get_string_size(VisualsCore.Texts.TextImage[index].text).y
+			if is_instance_valid(VisualsCore.Texts.TextImage[index]):
+				VisualsCore.Texts.TextImage[index].rect_global_position.y = (Buttons.ButtonScreenY[index]-(textHeight / 2))
+
+	pass
+
+
+
+func _process(delta):
+	
+	pass

@@ -1,6 +1,8 @@
 # "VisualsCore.gd"
 extends Node
 
+var DEBUG = true
+
 var ScreenWidth = 1024
 var ScreenHeight = 640
 
@@ -41,10 +43,6 @@ class TextClass:
 	var TextOutlineBlue = []
 var Texts = TextClass.new()
 
-#var TestTextScaleX = 1.0
-#var TestTextScaleY = 1.0
-#var TestTextRotation = 0
-
 
 #----------------------------------------------------------------------------------------
 func _ready():
@@ -70,6 +68,9 @@ func _ready():
 	Sprites.SpriteImage[20].set_texture(preload("res://media/images/logos/Logo.png"))
 	Sprites.SpriteActive[20] = true
 
+	Sprites.SpriteImage[25].set_texture(preload("res://media/images/logos/GooglePlayLogo.png"))
+	Sprites.SpriteActive[25] = true
+
 	Sprites.SpriteImage[30].set_texture(preload("res://media/images/gui/ScreenLine.png"))
 	Sprites.SpriteActive[30] = true
 	Sprites.SpriteImage[31].set_texture(preload("res://media/images/gui/ScreenLine.png"))
@@ -81,6 +82,31 @@ func _ready():
 	Sprites.SpriteImage[34].set_texture(preload("res://media/images/gui/ScreenLine.png"))
 	Sprites.SpriteActive[34] = true
 
+	Sprites.SpriteImage[40].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[40] = true
+	Sprites.SpriteImage[41].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[41] = true
+	Sprites.SpriteImage[42].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[42] = true
+	Sprites.SpriteImage[43].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[43] = true
+	Sprites.SpriteImage[44].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[44] = true
+	Sprites.SpriteImage[45].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[45] = true
+	Sprites.SpriteImage[46].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[46] = true
+	Sprites.SpriteImage[47].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[47] = true
+	Sprites.SpriteImage[48].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[48] = true
+	Sprites.SpriteImage[49].set_texture(preload("res://media/images/gui/Button.png"))
+	Sprites.SpriteActive[49] = true
+
+	Sprites.SpriteImage[50].set_texture(preload("res://media/images/gui/ButtonSelectorLeft.png"))
+	Sprites.SpriteActive[50] = true
+	Sprites.SpriteImage[51].set_texture(preload("res://media/images/gui/ButtonSelectorRight.png"))
+	Sprites.SpriteActive[51] = true
 	
 	for index in range(0, 1000):
 		if Sprites.SpriteActive[index] == true:
@@ -98,13 +124,15 @@ func _ready():
 
 	pass
 
+
 #----------------------------------------------------------------------------------------
 func MoveAllActiveSpritesOffScreen():
-	for index in range(0, 1000):
+	for index in range(1, 1000):
 		if Sprites.SpriteActive[index] == true:
 			Sprites.SpriteImage[index].global_position = Vector2(-9999, -9999)
 
 	pass
+
 
 #----------------------------------------------------------------------------------------
 func DrawSprite(var index, var x, var y, var scaleX, var scaleY, var rotation, var red, var green, var blue, var alpha):
@@ -126,12 +154,19 @@ func DrawSprite(var index, var x, var y, var scaleX, var scaleY, var rotation, v
 
 	pass
 
+
 #----------------------------------------------------------------------------------------
 func DeleteAllTexts():
-	for index in range(0, TextCurrentIndex):
-		Texts.TextImage[index].queue_free()
+	var size = Texts.TextImage.size()
+	size-=1
+
+	for index in range(size, 0, -1):
+		remove_child(Texts.TextImage[index])
+
+	TextCurrentIndex = 0
 
 	pass
+
 
 #----------------------------------------------------------------------------------------
 func DrawnTextChangeScaleRotation(var index, var scaleX, var scaleY, var rotation):
@@ -139,6 +174,7 @@ func DrawnTextChangeScaleRotation(var index, var scaleX, var scaleY, var rotatio
 	VisualsCore.Texts.TextImage[index].rect_rotation = rotation
 
 	pass
+
 
 #----------------------------------------------------------------------------------------
 func DrawText(var index, var text, var x, var y, var horizontalJustification, var fontSize, var scaleX, var scaleY, var rotation, var red, var green, var blue, var alpha, var outlineRed, var outlineGreen, var outlineBlue):

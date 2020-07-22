@@ -1,9 +1,10 @@
+# "InputCore.gd"
 extends Node
 
 var KeyboardSpacebarPressed
 var MouseButtonLeftPressed
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	set_process_input(true)
 	
@@ -12,8 +13,10 @@ func _ready():
 	
 	pass
 
+
 func _process(delta):
 	pass
+
 
 func _input(event):
 	

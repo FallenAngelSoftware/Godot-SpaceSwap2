@@ -22,13 +22,13 @@ config/icon="res://icon.png"
 
 [autoload]
 
+VisualsCore="*res://VisualsCore.gd"
 AudioCore="*res://AudioCore.gd"
 DataCore="*res://DataCore.gd"
 InputCore="*res://InputCore.gd"
 InterfaceCore="*res://InterfaceCore.gd"
 LogicCore="*res://LogicCore.gd"
 ScreensCore="*res://ScreensCore.gd"
-VisualsCore="*res://VisualsCore.gd"
 
 [debug]
 
