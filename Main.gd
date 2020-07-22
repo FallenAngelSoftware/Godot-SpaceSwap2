@@ -22,18 +22,17 @@ func _ready():
 
 	VisualsCore.DrawSprite(20, VisualsCore.ScreenWidth/2, 90, 1.75, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
-	VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 160, 2.85, 2.0, 0, 1.0, 1.0, 1.0, 1.0)
+	VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 160, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+	VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 596, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+	VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2020 By Team ''www.FallenAngelSoftware.com''", 0, 640-19, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 
 	VisualsCore.TestTextScaleX = 1.0
 	VisualsCore.TestTextScaleY = 1.0
-	VisualsCore.TestTextRotation = 1
+	VisualsCore.TestTextRotation = 0
 	VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "DEMO", 0, VisualsCore.ScreenHeight/2, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-
-
-	VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 596, 2.85, 2.0, 0, 1.0, 1.0, 1.0, 1.0)
-
-	VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2020 By Team ''www.FallenAngelSoftware.com''", 0, 640-19, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 	
 	pass
@@ -55,6 +54,6 @@ func _process(delta):
 		VisualsCore.TestTextRotation+=1
 	else: VisualsCore.TestTextRotation = 0
 
-	VisualsCore.DrawnTextChangeScaleRotation(1, VisualsCore.TestTextScaleX, VisualsCore.TestTextScaleY, VisualsCore.TestTextRotation)
+	VisualsCore.DrawnTextChangeScaleRotation(2, VisualsCore.TestTextScaleX, VisualsCore.TestTextScaleY, VisualsCore.TestTextRotation)
 
 	pass

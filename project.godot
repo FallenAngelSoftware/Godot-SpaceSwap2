@@ -29,9 +29,14 @@ LogicCore="*res://LogicCore.gd"
 ScreensCore="*res://ScreensCore.gd"
 VisualsCore="*res://VisualsCore.gd"
 
+[debug]
+
+settings/fps/force_fps=30
+
 [display]
 
 window/size/height=640
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 
 [rendering]
