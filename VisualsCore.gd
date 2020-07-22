@@ -41,9 +41,9 @@ class TextClass:
 	var TextOutlineBlue = []
 var Texts = TextClass.new()
 
-var TestTextScaleX = 1.0
-var TestTextScaleY = 1.0
-var TestTextRotation = 0
+#var TestTextScaleX = 1.0
+#var TestTextScaleY = 1.0
+#var TestTextRotation = 0
 
 
 #----------------------------------------------------------------------------------------
@@ -74,6 +74,12 @@ func _ready():
 	Sprites.SpriteActive[30] = true
 	Sprites.SpriteImage[31].set_texture(preload("res://media/images/gui/ScreenLine.png"))
 	Sprites.SpriteActive[31] = true
+	Sprites.SpriteImage[32].set_texture(preload("res://media/images/gui/ScreenLine.png"))
+	Sprites.SpriteActive[32] = true
+	Sprites.SpriteImage[33].set_texture(preload("res://media/images/gui/ScreenLine.png"))
+	Sprites.SpriteActive[33] = true
+	Sprites.SpriteImage[34].set_texture(preload("res://media/images/gui/ScreenLine.png"))
+	Sprites.SpriteActive[34] = true
 
 	
 	for index in range(0, 1000):
@@ -89,6 +95,14 @@ func _ready():
 	FontTTF[1].size = 60
 
 	TextCurrentIndex = 0
+
+	pass
+
+#----------------------------------------------------------------------------------------
+func MoveAllActiveSpritesOffScreen():
+	for index in range(0, 1000):
+		if Sprites.SpriteActive[index] == true:
+			Sprites.SpriteImage[index].global_position = Vector2(-9999, -9999)
 
 	pass
 
@@ -109,6 +123,13 @@ func DrawSprite(var index, var x, var y, var scaleX, var scaleY, var rotation, v
 	Sprites.SpriteColorGreen[index] = green
 	Sprites.SpriteColorBlue[index] = blue
 	Sprites.SpriteColorAlpha[index] = alpha
+
+	pass
+
+#----------------------------------------------------------------------------------------
+func DeleteAllTexts():
+	for index in range(0, TextCurrentIndex):
+		Texts.TextImage[index].queue_free()
 
 	pass
 

@@ -5,6 +5,8 @@ extends Node
 # var a = 2
 # var b = "text"
 
+var Version = "Version 2 - Alpha .0.0.1"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
