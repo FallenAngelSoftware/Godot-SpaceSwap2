@@ -109,7 +109,7 @@ func DrawAllButtons():
 					
 			VisualsCore.Sprites.SpriteImage[40+index].global_position = Vector2(Buttons.ButtonScreenX[index], Buttons.ButtonScreenY[index])
 
-			if index == ButtonSelectedByKeyboard:
+			if index == ButtonSelectedByKeyboard && NumberOfButtonsOnScreen > 1:
 				VisualsCore.Sprites.SpriteImage[50].global_position = Vector2((VisualsCore.ScreenWidth/2)-154, Buttons.ButtonScreenY[index])
 				VisualsCore.Sprites.SpriteImage[51].global_position = Vector2((VisualsCore.ScreenWidth/2)+154, Buttons.ButtonScreenY[index])
 

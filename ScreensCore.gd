@@ -20,6 +20,10 @@ const AboutScreen			= 6
 var ScreenToDisplay
 var ScreenToDisplayNext
 
+const OSWindows				= 1
+const OSHTMLFive			= 2
+var OperatingSys = 0
+
 #----------------------------------------------------------------------------------------
 func _ready():
 	ScreenFadeStatus = FadingFromBlack
@@ -27,6 +31,12 @@ func _ready():
 
 	ScreenToDisplay = FASScreen
 	ScreenToDisplayNext = TitleScreen
+
+	if OS.get_name() == "Windows":
+		OperatingSys = OSWindows
+	elif OS.get_name() == "HTML5":
+		OperatingSys = OSHTMLFive
+
 
 	pass
 
@@ -115,16 +125,6 @@ func DisplayFASScreen():
 #----------------------------------------------------------------------------------------
 func DisplayTitleScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
-
-
-#		print("TextCurrentIndex: ", VisualsCore.TextCurrentIndex)
-#		print("Text Array Size(???)", VisualsCore.Texts.TextImage.size())
-#		for index in range(0, VisualsCore.Texts.TextImage.size()):
-#			print("Text# ", index, ": ''", VisualsCore.Texts.TextImage[index].text, "''")
-
-#		VisualsCore.TextCurrentIndex = 10
-
-
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -170,8 +170,11 @@ func DisplayTitleScreen():
 		ScreenToDisplayNext = AboutScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(5) == true:
-		ScreenToDisplayNext = TitleScreen
-		ScreenFadeStatus = FadingToBlack
+		if OperatingSys == OSWindows:
+			get_tree().quit()
+		elif OperatingSys == OSHTMLFive:
+			OS.shell_open("http://fallenangelsoftware.com")
+
 
 #	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
 #		VisualsCore.DeleteAllTexts()
