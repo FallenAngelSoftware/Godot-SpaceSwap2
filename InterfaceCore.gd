@@ -29,7 +29,7 @@ func InitializeButtons():
 		
 	for index in range(0, 10):
 		Buttons.ButtonImageIndex.append(40+index)
-		VisualsCore.DrawText(index, ButtonText[index], 0, -99999, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(index, ButtonText[index], 0, -99999, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0)
 		Buttons.ButtonTextIndex.append(index)
 		Buttons.ButtonIndex.append(-1)
 		Buttons.ButtonScreenX.append(0)

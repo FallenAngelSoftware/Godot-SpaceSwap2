@@ -6,7 +6,7 @@ extends Node
 # var a = 2
 # var b = "text"
 
-var Version = "Version 2 - Alpha .0.0.1"
+var Version = "Version 2 - Unplayable Alpha - Game Engine Testing"
 
 
 # Called when the node enters the scene tree for the first time.
