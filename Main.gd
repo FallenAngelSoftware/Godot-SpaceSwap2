@@ -15,7 +15,7 @@ extends Node
 
 #----------------------------------------------------------------------------------------
 func _ready():
-	Engine.target_fps = 30 #3 #30
+	Engine.target_fps = 30
 	
 	VisualsCore.DrawSprite(0, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 	VisualsCore.Sprites.SpriteImage[0].set_z_index(1000)

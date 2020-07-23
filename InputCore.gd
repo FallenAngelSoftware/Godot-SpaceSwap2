@@ -55,6 +55,8 @@ func _input(event):
 
 	if DelayAllUserInput > 1:  return false
 
+	if ScreensCore.ScreenFadeStatus != ScreensCore.FadingIdle:  return false
+
 	if Input.is_action_pressed("KeyboardUp"):
 		JoystickDirection[0] = JoyUp
 	elif Input.is_action_pressed("KeyboardRight"):

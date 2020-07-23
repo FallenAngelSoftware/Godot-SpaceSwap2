@@ -86,7 +86,6 @@ func DrawAllButtons():
 			var textWidth = VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].get_font("normal_font").get_string_size(VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].text).x
 
 			if Buttons.ButtonAnimationTimer[index] == 3:
-				print("INDEX:", Buttons.ButtonIndex[index])
 				VisualsCore.Sprites.SpriteImage[40+index].scale = Vector2(0.85, 0.85)
 				VisualsCore.DrawnTextChangeScaleRotation(Buttons.ButtonIndex[index], 0.85, 0.85, 0)
 				VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].rect_global_position.x = (Buttons.ButtonScreenX[index]-(((textWidth-(textWidth*0.85)) / 2) + ((textWidth*0.85) / 2)))
@@ -145,7 +144,6 @@ func ThisButtonWasPressed(var buttonToCheck):
 				if buttonToCheck == ButtonSelectedByKeyboard:
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
 					InputCore.DelayAllUserInput = 10
-					print("KeyButtonKey:", ButtonSelectedByKeyboard)
 					return true
 
 			if InputCore.MouseButtonLeftPressed == true:
@@ -153,7 +151,6 @@ func ThisButtonWasPressed(var buttonToCheck):
 					ButtonSelectedByKeyboard = index
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
 					InputCore.DelayAllUserInput = 10
-					print("MouseButtonKey:", ButtonSelectedByKeyboard)
 					return true
 
 

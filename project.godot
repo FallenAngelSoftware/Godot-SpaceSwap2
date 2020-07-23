@@ -25,10 +25,10 @@ config/icon="res://icon.png"
 VisualsCore="*res://VisualsCore.gd"
 AudioCore="*res://AudioCore.gd"
 DataCore="*res://DataCore.gd"
+ScreensCore="*res://ScreensCore.gd"
 InputCore="*res://InputCore.gd"
 InterfaceCore="*res://InterfaceCore.gd"
 LogicCore="*res://LogicCore.gd"
-ScreensCore="*res://ScreensCore.gd"
 
 [debug]
 

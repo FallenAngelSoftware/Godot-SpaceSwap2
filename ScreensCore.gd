@@ -60,13 +60,9 @@ func ApplyScreenFadeTransition():
 			ScreenFadeTransparency = 1.0
 			ScreenFadeStatus = FadingFromBlack
 			
-			print("Text Array Size(Pre): ", VisualsCore.Texts.TextImage.size())
-
 			VisualsCore.MoveAllActiveSpritesOffScreen()
 			VisualsCore.DeleteAllTexts()
 			InterfaceCore.InitializeButtons(false)
-
-			print("Text Array Size(Post):", VisualsCore.Texts.TextImage.size())
 
 			ScreenToDisplay = ScreenToDisplayNext
 	
@@ -116,15 +112,15 @@ func DisplayFASScreen():
 		ScreenFadeStatus = FadingToBlack
 		ScreenDisplayTimer = -1
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-#		VisualsCore.DeleteAllTexts()
-#		ScreenToDisplay = TitleScreen
-#		ScreenFadeStatus = FadingFromBlack
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+		ScreenToDisplayNext = TitleScreen
+
+
 	pass
 
 #----------------------------------------------------------------------------------------
 func DisplayTitleScreen():
-	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
+	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -176,21 +172,20 @@ func DisplayTitleScreen():
 			OS.shell_open("http://fallenangelsoftware.com")
 
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-#		VisualsCore.DeleteAllTexts()
-#		ScreenToDisplay = TitleScreen
-#		ScreenFadeStatus = FadingFromBlack
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+		ScreenToDisplayNext = TitleScreen
+
+
 	pass
 
 
 #----------------------------------------------------------------------------------------
 func DisplayOptionsScreen():
-	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
+	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
-		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "O  P  T  I  O  N  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
@@ -199,18 +194,17 @@ func DisplayOptionsScreen():
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-#		VisualsCore.DeleteAllTexts()
-#		ScreenToDisplay = TitleScreen
-#		ScreenFadeStatus = FadingFromBlack
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+		ScreenToDisplayNext = TitleScreen
+
 	pass
 
 
 #----------------------------------------------------------------------------------------
 func DisplayHowToPlayScreen():
-	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
+	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
-		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  O  W   T  O   P  L  A  Y:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
@@ -222,21 +216,20 @@ func DisplayHowToPlayScreen():
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-#		VisualsCore.DeleteAllTexts()
-#		ScreenToDisplay = TitleScreen
-#		ScreenFadeStatus = FadingFromBlack
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+		ScreenToDisplayNext = TitleScreen
+
+
 	pass
 
 
 #----------------------------------------------------------------------------------------
 func DisplayHighScoresScreen():
-	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
+	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
-		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  I  G  H   S  C  O  R  E  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
@@ -245,39 +238,34 @@ func DisplayHighScoresScreen():
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-#		VisualsCore.DeleteAllTexts()
-#		ScreenToDisplay = TitleScreen
-#		ScreenFadeStatus = FadingFromBlack
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+		ScreenToDisplayNext = TitleScreen
+
+
 	pass
 
 
 #----------------------------------------------------------------------------------------
 func DisplayAboutScreen():
-	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
+	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
-		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-#		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  I  G  H   S  C  O  R  E  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
 
+		VisualsCore.LoadAboutScreenTexts()
 
-#		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
+	for index in range(VisualsCore.AboutTextsStartIndex, VisualsCore.AboutTextsEndIndex):
+		VisualsCore.Texts.TextImage[index].rect_global_position.y-=3
 
-	if InterfaceCore.ThisButtonWasPressed(0) == true:
+	if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y != -99999: # BANDAID - FIX IT
+		if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45 || InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:
+			ScreenToDisplayNext = TitleScreen
+			ScreenFadeStatus = FadingToBlack
+
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
 		ScreenToDisplayNext = TitleScreen
-		ScreenFadeStatus = FadingToBlack
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-#		VisualsCore.DeleteAllTexts()
-#		ScreenToDisplay = TitleScreen
-#		ScreenFadeStatus = FadingFromBlack
+
 	pass
-
-
-
-
-
 
 
 #----------------------------------------------------------------------------------------

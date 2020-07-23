@@ -43,6 +43,15 @@ class TextClass:
 	var TextOutlineBlue = []
 var Texts = TextClass.new()
 
+class AboutText:
+	var AboutTextsText = []
+#	var AboutTextsScreenY = []
+	var AboutTextsBlue = []
+var AboutTexts = AboutText.new()
+
+var AboutTextsStartIndex
+var AboutTextsEndIndex
+
 
 #----------------------------------------------------------------------------------------
 func _ready():
@@ -121,6 +130,10 @@ func _ready():
 	FontTTF[1].size = 60
 
 	TextCurrentIndex = 0
+
+	AboutTextsStartIndex = 0
+	AboutTextsEndIndex = 0
+
 
 	pass
 
@@ -245,3 +258,47 @@ func DrawText(var index, var text, var x, var y, var horizontalJustification, va
 	TextCurrentIndex+=1
 
 	pass
+
+
+#----------------------------------------------------------------------------------------
+func AddAboutScreenText(var text, var blue):
+	AboutTexts.AboutTextsText.append(text)
+	AboutTexts.AboutTextsBlue.append(blue)
+
+	AboutTextsEndIndex+=1
+
+
+	pass
+
+
+#----------------------------------------------------------------------------------------
+func LoadAboutScreenTexts():
+	AboutTextsStartIndex = 10
+	AboutTextsEndIndex = AboutTextsStartIndex
+
+	AddAboutScreenText("TM", 0.0)
+	AddAboutScreenText("''Space Swap™ 2''", 0.0)
+	AddAboutScreenText("©2021 By Team ''www.FallenAngelSoftware.com''", 1.0)
+
+	AddAboutScreenText("Original Concept By:", 0.0)
+	AddAboutScreenText("Nintendo", 1.0)
+
+	AddAboutScreenText("Made With 100% FREE ''Godot Game engine'':", 0.0)
+	AddAboutScreenText("www.GodotEngine.org", 1.0)
+
+	DrawText(AboutTextsStartIndex, AboutTexts.AboutTextsText[AboutTextsStartIndex-10], ((ScreenWidth/2)+100), ScreenHeight+25, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[AboutTextsStartIndex-10], 0.0, 0.0, 0.0, 0.0)
+
+	var screenY = ScreenHeight+25
+	for index in range(AboutTextsStartIndex+1, AboutTextsEndIndex):
+		if (AboutTexts.AboutTextsBlue[index-10] == 1.0 && AboutTexts.AboutTextsBlue[index-1-10] == 0.0):
+			screenY+=30
+		elif (AboutTexts.AboutTextsBlue[index-10] == 0.0 && AboutTexts.AboutTextsBlue[index-1-10] == 0.0):
+			screenY+=30
+		else:
+			screenY+=60
+
+		DrawText(index, AboutTexts.AboutTextsText[index-10], 0, screenY, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[index-10], 1.0, 0.0, 0.0, 0.0)
+
+
+	pass
+
