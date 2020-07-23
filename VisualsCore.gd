@@ -170,8 +170,8 @@ func DeleteAllTexts():
 
 #----------------------------------------------------------------------------------------
 func DrawnTextChangeScaleRotation(var index, var scaleX, var scaleY, var rotation):
-	VisualsCore.Texts.TextImage[index].rect_scale = Vector2(scaleX, scaleY)
-	VisualsCore.Texts.TextImage[index].rect_rotation = rotation
+	Texts.TextImage[index].rect_scale = Vector2(scaleX, scaleY)
+	Texts.TextImage[index].rect_rotation = rotation
 
 	pass
 
