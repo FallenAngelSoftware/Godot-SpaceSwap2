@@ -54,7 +54,7 @@ func ApplyScreenFadeTransition():
 
 			VisualsCore.MoveAllActiveSpritesOffScreen()
 			VisualsCore.DeleteAllTexts()
-			InterfaceCore.InitializeButtons()
+			InterfaceCore.InitializeButtons(false)
 
 			print("Text Array Size(Post):", VisualsCore.Texts.TextImage.size())
 
@@ -115,6 +115,16 @@ func DisplayFASScreen():
 #----------------------------------------------------------------------------------------
 func DisplayTitleScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 0.9:
+
+
+#		print("TextCurrentIndex: ", VisualsCore.TextCurrentIndex)
+#		print("Text Array Size(???)", VisualsCore.Texts.TextImage.size())
+#		for index in range(0, VisualsCore.Texts.TextImage.size()):
+#			print("Text# ", index, ": ''", VisualsCore.Texts.TextImage[index].text, "''")
+
+#		VisualsCore.TextCurrentIndex = 10
+
+
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)

@@ -18,7 +18,7 @@ var NumberOfButtonsOnScreen
 var ButtonSelectedByKeyboard
 
 #----------------------------------------------------------------------------------------
-func InitializeButtons():
+func InitializeButtons(var createTexts):
 	Buttons.ButtonImageIndex.clear()
 	Buttons.ButtonTextIndex.clear()
 	Buttons.ButtonIndex.clear()
@@ -26,14 +26,18 @@ func InitializeButtons():
 	Buttons.ButtonScreenY.clear()
 	Buttons.ButtonAnimationTimer.clear()
 	Buttons.ButtonScale.clear()
-		
+
 	for index in range(0, 10):
 		Buttons.ButtonImageIndex.append(40+index)
-		VisualsCore.DrawText(index, ButtonText[index], 0, -99999, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0)
+		
+		if createTexts == true:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, ButtonText[index], 0, -99999, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0)
+		
 		Buttons.ButtonTextIndex.append(index)
 		Buttons.ButtonIndex.append(-1)
 		Buttons.ButtonScreenX.append(0)
 		Buttons.ButtonScreenY.append(-99999)
+		VisualsCore.Texts.TextImage[index].rect_global_position.y = -99999
 		Buttons.ButtonAnimationTimer.append(-1)
 		Buttons.ButtonScale.append(1.0)
 
@@ -55,7 +59,7 @@ func _ready():
 	ButtonText.append("BGM Test")
 	ButtonText.append("N.A.")
 
-	InitializeButtons()
+	InitializeButtons(true)
 
 	pass
 

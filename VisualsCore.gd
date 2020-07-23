@@ -160,10 +160,12 @@ func DeleteAllTexts():
 	var size = Texts.TextImage.size()
 	size-=1
 
-	for index in range(size, 0, -1):
+	for index in range(size, 9, -1):
 		remove_child(Texts.TextImage[index])
+		Texts.TextImage.remove(index)
+#		Texts.TextImage[index].queue_free()
 
-	TextCurrentIndex = 0
+	TextCurrentIndex = 10
 
 	pass
 
