@@ -249,7 +249,7 @@ func DisplayHighScoresScreen():
 func DisplayAboutScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
-		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
+		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.25)
 
 		VisualsCore.LoadAboutScreenTexts()
 

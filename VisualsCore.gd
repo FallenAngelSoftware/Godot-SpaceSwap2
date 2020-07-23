@@ -284,20 +284,123 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("Nintendo", 1.0)
 
 	AddAboutScreenText("Made With 100% FREE ''Godot Game engine'':", 0.0)
-	AddAboutScreenText("www.GodotEngine.org", 1.0)
+	AddAboutScreenText("(www.GodotEngine.org)", 1.0)
+
+	AddAboutScreenText("Game Built On:", 0.0)
+	AddAboutScreenText("Genuine ''openSUSE Tumbleweed KDE 64Bit'' Linux", 1.0)
+	AddAboutScreenText("(www.openSUSE.org)", 1.0)
+	AddAboutScreenText("Real Programmers Use Linux!", 1.0)
+
+	AddAboutScreenText("Project Directed By:", 0.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("''Godot'' 2-D Game Engine:", 0.0)
+	AddAboutScreenText("The ''Grand National GNX'' Engine[TM]", 1.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("Lead Game Designer:", 0.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("Lead Game Programmer:", 0.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("Lead Game Tester:", 0.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("Support Game Programmers:", 0.0)
+	AddAboutScreenText("''Daotheman''", 1.0)
+	AddAboutScreenText("''theweirdn8''", 1.0)
+	AddAboutScreenText("''mattmatteh''", 1.0)
+
+	AddAboutScreenText("Lead Graphic Artist:", 0.0)
+	AddAboutScreenText("''Oshi Bobo''", 1.0)
+	AddAboutScreenText("''www.OshiBobo.com''", 1.0)
+	AddAboutScreenText("(For Hire Graphic Artist)", 1.0)
+
+	AddAboutScreenText("Support Graphic Artist:", 0.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("Lead Music Artist:", 0.0)
+	AddAboutScreenText("''D.J. Fading Twilight''", 1.0)
+
+	AddAboutScreenText("Sound Effects Compiled & Edited By:", 0.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("''Neo's Kiss'' Graphical User Interface By:", 0.0)
+	AddAboutScreenText("''JeZxLee''", 1.0)
+
+	AddAboutScreenText("PNG Graphics Edited In:", 0.0)
+	AddAboutScreenText("''NeoPaint''", 1.0)
+	AddAboutScreenText("(www.NeoSoftware.com/NPW.html)", 1.0)
+
+	AddAboutScreenText("PNG Graphics Optimized Using:", 0.0)
+	AddAboutScreenText("''TinyPNG''", 1.0)
+	AddAboutScreenText("(www.TinyPNG.com)", 1.0)
+
+	AddAboutScreenText("OGG Audio Edited In:", 0.0)
+	AddAboutScreenText("''GoldWave''", 1.0)
+	AddAboutScreenText("(www.GoldWave.com)", 1.0)
+
+	AddAboutScreenText("OGG Audio Optimized Using:", 0.0)
+	AddAboutScreenText("''OGGResizer''", 1.0)
+	AddAboutScreenText("(www.SkyShape.com)", 1.0)
+
+	AddAboutScreenText("''Space Swap 2'' Logo Created In:", 0.0)
+	AddAboutScreenText("Genuine M.S. Office 365 Publisher", 1.0)
+	AddAboutScreenText("(www.Office.com)", 1.0)
+
+	AddAboutScreenText("Game Created On A:", 0.0)
+	AddAboutScreenText("Hyper-Custom ''JeZxLee'' Pro-Built Desktop", 1.0)
+	AddAboutScreenText("Desktop Code Name: ''Optimus Prime''", 1.0)
+	AddAboutScreenText("Genuine ''openSUSE Tumbleweed KDE 64Bit'' Linux", 1.0)
+	AddAboutScreenText("Corsair® 750watt Modular Power Supply", 1.0)
+	AddAboutScreenText("GIGABYTE® GA-970A-DS3P 2.0 AM3+ Motherboard", 1.0)
+	AddAboutScreenText("AMD® FX 3.5GHz(4GHz Turbo) 8-Core CPU", 1.0)
+	AddAboutScreenText("Corsair® 32GB DDR3 RAM Memory", 1.0)
+	AddAboutScreenText("nVidia® GeForce GTX 970TT 4GB GDDR5 GPU", 1.0)
+	AddAboutScreenText("ADATA® 1TB SSD Hard Drive(OS/Apps)", 1.0)
+	AddAboutScreenText("Western Digital® 1TB HDD Hard Drive(Personal Data)", 1.0)
+
+	AddAboutScreenText("HTML5 Version Tested On:", 0.0)
+	AddAboutScreenText("Genuine Windows® 10 Pro 64Bit", 1.0)
+	AddAboutScreenText("Edge", 1.0)
+	AddAboutScreenText("Firefox", 1.0)
+	AddAboutScreenText("Chrome", 1.0)
+	AddAboutScreenText("Opera", 1.0)
+
+	AddAboutScreenText("Android Version Tested On:", 0.0)
+	AddAboutScreenText("Samsung® Galaxy S7 Edge Smartphone", 1.0)
+	AddAboutScreenText("Onn® Android 10.1'' 16GB Tablet", 1.0)
+
+	AddAboutScreenText("Big Thank You To People Who Helped:", 0.0)
+	AddAboutScreenText("''TwistedTwigleg''", 1.0)
+	AddAboutScreenText("''Megalomaniak", 1.0)
+	AddAboutScreenText("''SIsilicon28''", 1.0)
+	AddAboutScreenText("''vimino''", 1.0)
+	AddAboutScreenText("''(: PurpleConditioner :)''", 1.0)
+	AddAboutScreenText("''Kequc''", 1.0)
+	AddAboutScreenText("''qeed''", 1.0)
+	AddAboutScreenText(" ", 1.0)
+	AddAboutScreenText("''You!''", 1.0)
+
+	AddAboutScreenText("''A 110% By Team Fallen Angel Software!''", 0.0)
+	AddAboutScreenText("(www.FallenAngelSoftware.com)", 1.0)
 
 	DrawText(AboutTextsStartIndex, AboutTexts.AboutTextsText[AboutTextsStartIndex-10], ((ScreenWidth/2)+100), ScreenHeight+25, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[AboutTextsStartIndex-10], 0.0, 0.0, 0.0, 0.0)
 
 	var screenY = ScreenHeight+25
 	for index in range(AboutTextsStartIndex+1, AboutTextsEndIndex):
 		if (AboutTexts.AboutTextsBlue[index-10] == 1.0 && AboutTexts.AboutTextsBlue[index-1-10] == 0.0):
-			screenY+=30
-		elif (AboutTexts.AboutTextsBlue[index-10] == 0.0 && AboutTexts.AboutTextsBlue[index-1-10] == 0.0):
-			screenY+=30
+			screenY+=40
+		elif (AboutTexts.AboutTextsBlue[index-10] == 1.0 && AboutTexts.AboutTextsBlue[index-1-10] == 1.0):
+			screenY+=40
 		else:
-			screenY+=60
+			screenY+=110
 
 		DrawText(index, AboutTexts.AboutTextsText[index-10], 0, screenY, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, AboutTexts.AboutTextsBlue[index-10], 1.0, 0.0, 0.0, 0.0)
+
+	Texts.TextImage[AboutTextsEndIndex-2].rect_global_position.y+=(ScreenHeight/2)
+	Texts.TextImage[AboutTextsEndIndex-1].rect_global_position.y+=(ScreenHeight/2)
 
 
 	pass
