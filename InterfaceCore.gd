@@ -270,15 +270,15 @@ func ThisArrowWasPressed(var arrowToCheck):
 	for index in range(0, NumberOfArrowSetsOnScreen):
 		if ArrowSets.ArrowSetIndex[index] > -1:
 			if InputCore.MouseButtonLeftPressed == true:
-				if ArrowSetSelectedByKeyboard == arrowToCheck && InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-25) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+25) && InputCore.MouseScreenX > (30-21) && InputCore.MouseScreenX < (30+21):
+				if ArrowSetSelectedByKeyboard == arrowToCheck && InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-21) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+21) && InputCore.MouseScreenX > (30-25) && InputCore.MouseScreenX < (30+25):
 					ArrowSetSelectedByKeyboard = index
-					ArrowSets.ArrowSetLeftAnimationTimer[ButtonSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 30
+					ArrowSets.ArrowSetLeftAnimationTimer[ArrowSetSelectedByKeyboard] = 3
+					InputCore.DelayAllUserInput = 15
 					return true
-				elif (ArrowSetSelectedByKeyboard+0.5) == arrowToCheck && InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-25) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+25) && InputCore.MouseScreenX > ((VisualsCore.ScreenWidth-30)-21) && InputCore.MouseScreenX < ((VisualsCore.ScreenWidth-30)+21):
+				elif (ArrowSetSelectedByKeyboard+0.5) == arrowToCheck && InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-21) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+21) && InputCore.MouseScreenX > ((VisualsCore.ScreenWidth-30)-25) && InputCore.MouseScreenX < ((VisualsCore.ScreenWidth-30)+25):
 					ArrowSetSelectedByKeyboard = index
-					ArrowSets.ArrowSetRightAnimationTimer[ButtonSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 30
+					ArrowSets.ArrowSetRightAnimationTimer[ArrowSetSelectedByKeyboard] = 3
+					InputCore.DelayAllUserInput = 15
 					return true
 
 

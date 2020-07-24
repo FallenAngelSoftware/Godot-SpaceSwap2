@@ -192,6 +192,13 @@ func DisplayOptionsScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "O  P  T  I  O  N  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
+		InterfaceCore.CreateArrowSet(0, 70)
+
+
+
+
+
+
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
 
@@ -236,10 +243,16 @@ func DisplayHighScoresScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  I  G  H    S  C  O  R  E  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
-		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
-
 		InterfaceCore.CreateArrowSet(0, 70)
+
+		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+		if VisualsCore.DEBUG == false:
+			InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
+		elif VisualsCore.DEBUG == true:
+			InterfaceCore.CreateButton (7, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25-67)
+			InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
+			InterfaceCore.ButtonSelectedByKeyboard = 1
 
 		if LogicCore.GameMode == LogicCore.ChildStoryMode:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Child Story Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
@@ -253,9 +266,6 @@ func DisplayHighScoresScreen():
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Teen Never Ending Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		elif LogicCore.GameMode == LogicCore.AdultNeverEndMode:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Adult Never Ending Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
-
-
-
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "NAME:", 55, 120, 0, 25, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "LEVEL:", 610, 120, 0, 25, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.0, 0.0, 0.0)
@@ -297,8 +307,11 @@ func DisplayHighScoresScreen():
 		ScreenToDisplayNext = HighScoresScreen
 		ScreenFadeStatus = FadingToBlack
 
-
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
+		DataCore.ClearHighScores()
+		ScreenToDisplayNext = HighScoresScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisButtonWasPressed(1) == true:
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
