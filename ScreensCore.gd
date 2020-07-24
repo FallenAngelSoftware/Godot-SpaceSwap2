@@ -62,7 +62,8 @@ func ApplyScreenFadeTransition():
 			
 			VisualsCore.MoveAllActiveSpritesOffScreen()
 			VisualsCore.DeleteAllTexts()
-			InterfaceCore.InitializeButtons(false)
+			InterfaceCore.DeleteAllGUI()
+			InterfaceCore.InitializeGUI(false)
 
 			ScreenToDisplay = ScreenToDisplayNext
 	
@@ -238,6 +239,22 @@ func DisplayHighScoresScreen():
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
 
+		InterfaceCore.CreateArrowSet(0, 70)
+
+		if LogicCore.GameMode == LogicCore.ChildStoryMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Child Story Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.TeenStoryMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Teen Story Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.AdultStoryMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Adult Story Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.ChildNeverEndMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Child Never Ending Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.TeenNeverEndMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Teen Never Ending Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.AdultNeverEndMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Adult Never Ending Mode''", 0, 70, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+
+
 
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "NAME:", 55, 120, 0, 25, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.0, 0.0, 0.0)
@@ -264,6 +281,22 @@ func DisplayHighScoresScreen():
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(DataCore.HighScoreScore[LogicCore.GameMode][rank]), 750, screenY, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, blue, 1.0, 0.0, 0.0, 0.0)
 
 			screenY+=37
+
+	if InterfaceCore.ThisArrowWasPressed(0) == true:
+		if LogicCore.GameMode > 0:
+			LogicCore.GameMode-=1
+		else:  LogicCore.GameMode = 5
+		
+		ScreenToDisplayNext = HighScoresScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(0.5) == true:
+		if LogicCore.GameMode < 5:
+			LogicCore.GameMode+=1
+		else:  LogicCore.GameMode = 0
+		
+		ScreenToDisplayNext = HighScoresScreen
+		ScreenFadeStatus = FadingToBlack
+
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen
@@ -317,6 +350,8 @@ func ProcessScreenToDisplay():
 
 
 	InterfaceCore.DrawAllButtons()
+	InterfaceCore.DrawAllArrowSets()
+
 
 	ApplyScreenFadeTransition()
 

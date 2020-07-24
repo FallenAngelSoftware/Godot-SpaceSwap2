@@ -80,43 +80,34 @@ func _ready():
 	Sprites.SpriteImage[25].set_texture(preload("res://media/images/logos/GooglePlayLogo.png"))
 	Sprites.SpriteActive[25] = true
 
-	Sprites.SpriteImage[30].set_texture(preload("res://media/images/gui/ScreenLine.png"))
-	Sprites.SpriteActive[30] = true
-	Sprites.SpriteImage[31].set_texture(preload("res://media/images/gui/ScreenLine.png"))
-	Sprites.SpriteActive[31] = true
-	Sprites.SpriteImage[32].set_texture(preload("res://media/images/gui/ScreenLine.png"))
-	Sprites.SpriteActive[32] = true
-	Sprites.SpriteImage[33].set_texture(preload("res://media/images/gui/ScreenLine.png"))
-	Sprites.SpriteActive[33] = true
-	Sprites.SpriteImage[34].set_texture(preload("res://media/images/gui/ScreenLine.png"))
-	Sprites.SpriteActive[34] = true
+	
+	for index in range(30, 35):
+		Sprites.SpriteImage[index].set_texture(preload("res://media/images/gui/ScreenLine.png"))
+		Sprites.SpriteActive[index] = true
 
-	Sprites.SpriteImage[40].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[40] = true
-	Sprites.SpriteImage[41].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[41] = true
-	Sprites.SpriteImage[42].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[42] = true
-	Sprites.SpriteImage[43].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[43] = true
-	Sprites.SpriteImage[44].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[44] = true
-	Sprites.SpriteImage[45].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[45] = true
-	Sprites.SpriteImage[46].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[46] = true
-	Sprites.SpriteImage[47].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[47] = true
-	Sprites.SpriteImage[48].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[48] = true
-	Sprites.SpriteImage[49].set_texture(preload("res://media/images/gui/Button.png"))
-	Sprites.SpriteActive[49] = true
+
+	for index in range(40, 50):
+		Sprites.SpriteImage[index].set_texture(preload("res://media/images/gui/Button.png"))
+		Sprites.SpriteActive[index] = true
+
 
 	Sprites.SpriteImage[50].set_texture(preload("res://media/images/gui/ButtonSelectorLeft.png"))
 	Sprites.SpriteActive[50] = true
 	Sprites.SpriteImage[51].set_texture(preload("res://media/images/gui/ButtonSelectorRight.png"))
 	Sprites.SpriteActive[51] = true
-	
+
+
+#	for index in range(60, 70):
+	Sprites.SpriteImage[60].set_texture(preload("res://media/images/gui/SelectorLine.png"))
+	Sprites.SpriteActive[60] = true
+
+	for index in range(80, 90, 2):
+		Sprites.SpriteImage[index].set_texture(preload("res://media/images/gui/ButtonSelectorLeft.png"))
+		Sprites.SpriteActive[index] = true
+		Sprites.SpriteImage[index+1].set_texture(preload("res://media/images/gui/ButtonSelectorRight.png"))
+		Sprites.SpriteActive[index+1] = true
+
+
 	for index in range(0, 1000):
 		if Sprites.SpriteActive[index] == true:
 			add_child(Sprites.SpriteImage[index])
@@ -134,6 +125,10 @@ func _ready():
 	AboutTextsStartIndex = 0
 	AboutTextsEndIndex = 0
 
+
+	Sprites.SpriteImage[60].scale = Vector2(2.845, 1.0)
+	Sprites.SpriteImage[60].modulate = Color(1.0, 1.0, 1.0, 0.4)
+	
 
 	pass
 
@@ -388,7 +383,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''Megalomaniak", 1.0)
 	AddAboutScreenText("''SIsilicon28''", 1.0)
 	AddAboutScreenText("''vimino''", 1.0)
-	AddAboutScreenText("''(: PurpleConditioner :)''", 1.0)
+	AddAboutScreenText("(: ''Purple Conditioner'' :)", 1.0)
 	AddAboutScreenText("''Kequc''", 1.0)
 	AddAboutScreenText("''qeed''", 1.0)
 	AddAboutScreenText(" ", 1.0)

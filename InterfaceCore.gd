@@ -17,8 +17,23 @@ var Buttons = ButtonsClass.new()
 var NumberOfButtonsOnScreen
 var ButtonSelectedByKeyboard
 
+
+class ArrowSetsClass:
+	var ArrowSetIndex = []
+	var ArrowSetScreenY = []
+	var ArrowSetLeftAnimationTimer = []
+	var ArrowSetRightAnimationTimer = []
+	var ArrowSetLeftScale = []
+	var ArrowSetRightScale = []
+	var ArrowSetTextStringIndex = []
+var ArrowSets = ArrowSetsClass.new()
+
+var NumberOfArrowSetsOnScreen
+var ArrowSetSelectedByKeyboard
+
+
 #----------------------------------------------------------------------------------------
-func InitializeButtons(var createTexts):
+func InitializeGUI(var createTexts):
 	Buttons.ButtonImageIndex.clear()
 	Buttons.ButtonTextIndex.clear()
 	Buttons.ButtonIndex.clear()
@@ -44,6 +59,26 @@ func InitializeButtons(var createTexts):
 	NumberOfButtonsOnScreen = 0
 	ButtonSelectedByKeyboard = 0
 
+	ArrowSets.ArrowSetScreenY.clear()
+	ArrowSets.ArrowSetLeftAnimationTimer.clear()
+	ArrowSets.ArrowSetRightAnimationTimer.clear()
+	ArrowSets.ArrowSetLeftScale.clear()
+	ArrowSets.ArrowSetRightScale.clear()
+	ArrowSets.ArrowSetTextStringIndex.clear()
+
+	for index in range(0, 10):
+		ArrowSets.ArrowSetIndex.append(-1)
+		ArrowSets.ArrowSetScreenY.append(-99999)
+		ArrowSets.ArrowSetLeftAnimationTimer.append(-1)
+		ArrowSets.ArrowSetRightAnimationTimer.append(-1)
+		ArrowSets.ArrowSetLeftScale.append(1.0)
+		ArrowSets.ArrowSetRightScale.append(1.0)
+		ArrowSets.ArrowSetTextStringIndex.append(" ")
+
+	NumberOfArrowSetsOnScreen = 0
+	ArrowSetSelectedByKeyboard = 0
+
+
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -59,7 +94,10 @@ func _ready():
 	ButtonText.append("BGM Test")
 	ButtonText.append("N.A.")
 
-	InitializeButtons(true)
+	InitializeGUI(true)
+	
+	NumberOfArrowSetsOnScreen = 0
+	ArrowSetSelectedByKeyboard = 0
 
 	pass
 
@@ -81,7 +119,7 @@ func CreateButton (var index, var screenX, var screenY):
 func DrawAllButtons():
 	if NumberOfButtonsOnScreen == 0:  return
 
-	for index in range(0, 10):
+	for index in range(0, NumberOfButtonsOnScreen):
 		if Buttons.ButtonIndex[index] > -1:
 			var textWidth = VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].get_font("normal_font").get_string_size(VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].text).x
 
@@ -155,6 +193,125 @@ func ThisButtonWasPressed(var buttonToCheck):
 
 
 	pass
+
+
+#----------------------------------------------------------------------------------------
+func CreateArrowSet(var index, var screenY):
+	ArrowSetSelectedByKeyboard = 0
+	
+	ArrowSets.ArrowSetIndex[NumberOfArrowSetsOnScreen] = index
+	ArrowSets.ArrowSetScreenY[NumberOfArrowSetsOnScreen] = screenY
+	ArrowSets.ArrowSetLeftAnimationTimer[NumberOfArrowSetsOnScreen] = 0
+	ArrowSets.ArrowSetRightAnimationTimer[NumberOfArrowSetsOnScreen] = 0
+	ArrowSets.ArrowSetLeftScale[NumberOfArrowSetsOnScreen] = 1.0
+	ArrowSets.ArrowSetRightScale[NumberOfArrowSetsOnScreen] = 1.0
+
+	NumberOfArrowSetsOnScreen+=1
+
+	pass
+
+
+#----------------------------------------------------------------------------------------
+func DrawAllArrowSets():
+	if NumberOfArrowSetsOnScreen == 0:  return
+
+	VisualsCore.Sprites.SpriteImage[80].global_position = Vector2((VisualsCore.ScreenWidth-30), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+	VisualsCore.Sprites.SpriteImage[81].global_position = Vector2((30), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+
+	for index in range(0, NumberOfArrowSetsOnScreen):
+		if ArrowSets.ArrowSetIndex[index] > -1:
+			if ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 3:
+				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.85, 0.85)
+				ArrowSets.ArrowSetLeftAnimationTimer[(index*2)]-=1
+			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 2:
+				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.90, 0.90)
+				ArrowSets.ArrowSetLeftAnimationTimer[(index*2)]-=1
+			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 1:
+				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(0.95, 0.95)
+				ArrowSets.ArrowSetLeftAnimationTimer[(index*2)]-=1
+			elif ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] == 0:
+				VisualsCore.Sprites.SpriteImage[81+(index*2)].scale = Vector2(1.0, 1.0)
+				ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] = -1
+
+			if ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 3:
+				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.85, 0.85)
+				ArrowSets.ArrowSetRightAnimationTimer[(index*2)]-=1
+			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 2:
+				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.90, 0.90)
+				ArrowSets.ArrowSetRightAnimationTimer[(index*2)]-=1
+			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 1:
+				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(0.95, 0.95)
+				ArrowSets.ArrowSetRightAnimationTimer[(index*2)]-=1
+			elif ArrowSets.ArrowSetRightAnimationTimer[(index*2)] == 0:
+				VisualsCore.Sprites.SpriteImage[80+(index*2)].scale = Vector2(1.0, 1.0)
+				ArrowSets.ArrowSetRightAnimationTimer[(index*2)] = -1
+
+	VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+
+	pass
+
+
+#----------------------------------------------------------------------------------------
+func ThisArrowWasPressed(var arrowToCheck):
+	if NumberOfArrowSetsOnScreen == 0:  return false
+	if InputCore.DelayAllUserInput > 0:  return false
+
+	if InputCore.JoystickDirection[0] == InputCore.JoyLeft && ArrowSetSelectedByKeyboard == arrowToCheck:
+		ArrowSets.ArrowSetLeftAnimationTimer[ArrowSetSelectedByKeyboard] = 3
+		InputCore.DelayAllUserInput = 15
+
+		if ArrowSetSelectedByKeyboard == arrowToCheck:  return true
+	elif InputCore.JoystickDirection[0] == InputCore.JoyRight && (ArrowSetSelectedByKeyboard+0.5) == arrowToCheck:
+		ArrowSets.ArrowSetRightAnimationTimer[ArrowSetSelectedByKeyboard] = 3
+		InputCore.DelayAllUserInput = 15
+
+		if (ArrowSetSelectedByKeyboard+0.5) == arrowToCheck:  return true
+
+	for index in range(0, NumberOfArrowSetsOnScreen):
+		if ArrowSets.ArrowSetIndex[index] > -1:
+			if InputCore.MouseButtonLeftPressed == true:
+				if ArrowSetSelectedByKeyboard == arrowToCheck && InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-25) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+25) && InputCore.MouseScreenX > (30-21) && InputCore.MouseScreenX < (30+21):
+					ArrowSetSelectedByKeyboard = index
+					ArrowSets.ArrowSetLeftAnimationTimer[ButtonSelectedByKeyboard] = 3
+					InputCore.DelayAllUserInput = 30
+					return true
+				elif (ArrowSetSelectedByKeyboard+0.5) == arrowToCheck && InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-25) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+25) && InputCore.MouseScreenX > ((VisualsCore.ScreenWidth-30)-21) && InputCore.MouseScreenX < ((VisualsCore.ScreenWidth-30)+21):
+					ArrowSetSelectedByKeyboard = index
+					ArrowSets.ArrowSetRightAnimationTimer[ButtonSelectedByKeyboard] = 3
+					InputCore.DelayAllUserInput = 30
+					return true
+
+
+	pass
+
+
+#----------------------------------------------------------------------------------------
+func DeleteAllGUI():
+	ButtonSelectedByKeyboard = 0
+	
+	for index in range (0, NumberOfButtonsOnScreen):
+		Buttons.ButtonIndex[index] = -1
+		Buttons.ButtonScreenX[index] = -99999
+		Buttons.ButtonScreenY[index] = -99999
+		Buttons.ButtonAnimationTimer[index] = -1
+		Buttons.ButtonScale[index] = 1.0
+
+	NumberOfButtonsOnScreen = 0
+
+	ArrowSetSelectedByKeyboard = 0
+
+	for index in range (0, NumberOfArrowSetsOnScreen):
+		ArrowSets.ArrowSetIndex[index] = -1
+		ArrowSets.ArrowSetScreenY[index] = -99999
+		ArrowSets.ArrowSetLeftAnimationTimer[index] = 0
+		ArrowSets.ArrowSetRightAnimationTimer[index] = 0
+		ArrowSets.ArrowSetLeftScale[index] = 1.0
+		ArrowSets.ArrowSetRightScale[index] = 1.0
+
+	NumberOfArrowSetsOnScreen = 0
+
+	pass
+
 
 #----------------------------------------------------------------------------------------
 func _process(delta):
