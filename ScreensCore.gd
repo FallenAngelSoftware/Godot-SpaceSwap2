@@ -126,7 +126,11 @@ func DisplayTitleScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(20, VisualsCore.ScreenWidth/2, 82, 1.75, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 150, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "#1 Top Player ''JeZxLee'' Scored: 10000", 0, 170, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+
+		var highScoreFullText
+		highScoreFullText= "#1 Top Player ''"+DataCore.HighScoreName[LogicCore.GameMode][0]+"'' Scored: "+str(DataCore.HighScoreScore[LogicCore.GameMode][0])
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(highScoreFullText), 0, 170, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 194, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		var buttonY = 223
@@ -228,11 +232,38 @@ func DisplayHighScoresScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  I  G  H   S  C  O  R  E  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  I  G  H    S  C  O  R  E  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
+
+
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "NAME:", 55, 120, 0, 25, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "LEVEL:", 610, 120, 0, 25, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "SCORE:", 750, 120, 0, 25, 1.0, 1.0, 0, 0.7, 0.7, 0.7, 1.0, 0.0, 0.0, 0.0)
+	
+		var screenY = 154
+	#	var rank
+		var blue
+		for rank in range(0, 10):
+			blue = 1.0
+#			if Score = HighScoreScore [ GameMode, rank ] and Level = HighScoreLevel [ GameMode, rank ] then blue = 0
+	
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(1+rank)+".", 15-4, screenY, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, blue, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, DataCore.HighScoreName[LogicCore.GameMode][rank], 55, screenY, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, blue, 1.0, 0.0, 0.0, 0.0)
+
+			if DataCore.HighScoreLevel[LogicCore.GameMode][rank] < 10:
+				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(DataCore.HighScoreLevel[LogicCore.GameMode][rank]), 610, screenY, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, blue, 1.0, 0.0, 0.0, 0.0)
+			elif (LogicCore.GameMode == LogicCore.ChildStoryMode || LogicCore.GameMode == LogicCore.TeenStoryMode || LogicCore.GameMode == LogicCore.AdultStoryMode):
+				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "WON!", 610, screenY, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, blue, 1.0, 0.0, 0.0, 0.0)
+			else:
+				VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(DataCore.HighScoreLevel[LogicCore.GameMode][rank]), 610, screenY, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, blue, 1.0, 0.0, 0.0, 0.0)
+
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(DataCore.HighScoreScore[LogicCore.GameMode][rank]), 750, screenY, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, blue, 1.0, 0.0, 0.0, 0.0)
+
+			screenY+=37
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen

@@ -143,14 +143,14 @@ func ThisButtonWasPressed(var buttonToCheck):
 			if InputCore.KeyboardEnterPressed == true:
 				if buttonToCheck == ButtonSelectedByKeyboard:
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 10
+					InputCore.DelayAllUserInput = 30
 					return true
 
 			if InputCore.MouseButtonLeftPressed == true:
 				if InputCore.MouseScreenY > (Buttons.ButtonScreenY[index]-21) && InputCore.MouseScreenY < (Buttons.ButtonScreenY[index]+21) && InputCore.MouseScreenX > (Buttons.ButtonScreenX[index]-127) && InputCore.MouseScreenX < (Buttons.ButtonScreenX[index]+127):
 					ButtonSelectedByKeyboard = index
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 10
+					InputCore.DelayAllUserInput = 30
 					return true
 
 
