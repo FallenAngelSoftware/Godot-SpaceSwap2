@@ -205,7 +205,8 @@ func DisplayTitleScreen():
 		if OperatingSys == OSWindows:
 			get_tree().quit()
 		elif OperatingSys == OSHTMLFive:
-			OS.shell_open("http://fallenangelsoftware.com")
+#			OS.shell_open("http://fallenangelsoftware.com")
+			JavaScript.eval("window.location.replace('http://www.fallenangelsoftware.com');")
 
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:

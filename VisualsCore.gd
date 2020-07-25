@@ -392,6 +392,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("(: ''PurpleConditioner'' :)", 1.0)
 	AddAboutScreenText("''Kequc''", 1.0)
 	AddAboutScreenText("''qeed''", 1.0)
+	AddAboutScreenText("''Calinou''", 1.0)
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
 
