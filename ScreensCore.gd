@@ -228,33 +228,33 @@ func DisplayOptionsScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Music Volume:", 75, 70, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		InterfaceCore.CreateArrowSet(0, 70)
 		if AudioCore.MusicVolume == 1.0:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100% Volume", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicVolume == 0.75:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "75%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "75% Volume", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicVolume == 0.5:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "50%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "50% Volume", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicVolume == 0.25:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "25%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "25% Volume", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.MusicVolume == 0.0:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "0%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "0% Volume", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Sound Effects Volume:", 75, 70+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		InterfaceCore.CreateArrowSet(1, 70+50)
 		if AudioCore.EffectsVolume == 1.0:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100% Volume", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.EffectsVolume == 0.75:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "75%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "75% Volume", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.EffectsVolume == 0.5:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "50%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "50% Volume", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.EffectsVolume == 0.25:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "25%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "25% Volume", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif AudioCore.EffectsVolume == 0.0:
-			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "0%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "0% Volume", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 148, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Game Mode:", 75, 70+50+65, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		InterfaceCore.CreateArrowSet(0, 70+50+65)
+		InterfaceCore.CreateArrowSet(2, 70+50+65)
 		if LogicCore.GameMode == LogicCore.ChildStoryMode:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Child Story Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		elif LogicCore.GameMode == LogicCore.TeenStoryMode:
@@ -268,6 +268,16 @@ func DisplayOptionsScreen():
 		elif LogicCore.GameMode == LogicCore.AdultNeverEndMode:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Adult Never Ending Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Game Speed:", 75, 70+50+65+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(3, 70+50+65+50)
+		if LogicCore.GameSpeed == 20:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Slow Game Speed", 75, 70+50+65+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameSpeed == 30:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Normal Game Speed", 75, 70+50+65+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameSpeed == 45:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Fast Game Speed", 75, 70+50+65+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameSpeed == 60:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Turbo! Game Speed", 75, 70+50+65+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 
 
@@ -314,6 +324,30 @@ func DisplayOptionsScreen():
 		if LogicCore.GameMode < 5:
 			LogicCore.GameMode+=1
 		else:  LogicCore.GameMode = 0
+		
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(3.0) == true:
+		if LogicCore.GameSpeed == 60:
+			LogicCore.GameSpeed = 45
+		elif LogicCore.GameSpeed == 45:
+			LogicCore.GameSpeed = 30
+		elif LogicCore.GameSpeed == 30:
+			LogicCore.GameSpeed = 20
+		elif LogicCore.GameSpeed == 20:
+			LogicCore.GameSpeed = 60
+		
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(3.5) == true:
+		if LogicCore.GameSpeed == 60:
+			LogicCore.GameSpeed = 20
+		elif LogicCore.GameSpeed == 45:
+			LogicCore.GameSpeed = 60
+		elif LogicCore.GameSpeed == 30:
+			LogicCore.GameSpeed = 45
+		elif LogicCore.GameSpeed == 20:
+			LogicCore.GameSpeed = 30
 		
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack

@@ -297,14 +297,14 @@ func ThisArrowWasPressed(var arrowToCheck):
 					ArrowSetSelectedByKeyboard = index
 					ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] = 3
 #					ArrowSets.ArrowSetLeftAnimationTimer[ArrowSetSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 20
+					InputCore.DelayAllUserInput = 25
 					ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 					return true
 				elif InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-21) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+21) && InputCore.MouseScreenX > ((VisualsCore.ScreenWidth-30)-25) && InputCore.MouseScreenX < ((VisualsCore.ScreenWidth-30)+25):
 					ArrowSetSelectedByKeyboard = index
 					ArrowSets.ArrowSetRightAnimationTimer[(index*2)] = 3
 #					ArrowSets.ArrowSetRightAnimationTimer[ArrowSetSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 20
+					InputCore.DelayAllUserInput = 25
 					ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 					return true
 
