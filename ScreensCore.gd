@@ -29,8 +29,8 @@ func _ready():
 	ScreenFadeStatus = FadingFromBlack
 	ScreenFadeTransparency = 1.0
 
-	ScreenToDisplay = FASScreen
-	ScreenToDisplayNext = TitleScreen
+	ScreenToDisplay = GodotScreen
+	ScreenToDisplayNext = FASScreen
 
 	if OS.get_name() == "Windows":
 		OperatingSys = OSWindows
@@ -70,6 +70,33 @@ func ApplyScreenFadeTransition():
 	VisualsCore.Sprites.SpriteImage[0].modulate = Color(1.0, 1.0, 1.0, ScreenFadeTransparency)
 	
 	pass
+
+
+#----------------------------------------------------------------------------------------
+func DisplayGodotScreen():
+	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
+		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Made With 100% FREE:", 0, 100, 1, 60, 1.0, 1.0, 0, 0.8, 0.8, 0.8, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "www.GodotEngine.org", 0, 550, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		ScreenDisplayTimer = 200
+
+	if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:
+		ScreenDisplayTimer = 1
+
+	if 	ScreenDisplayTimer > 1:
+		ScreenDisplayTimer-=1
+	else:
+		ScreenToDisplayNext = FASScreen
+		ScreenFadeStatus = FadingToBlack
+		ScreenDisplayTimer = -1
+
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+		ScreenToDisplayNext = TitleScreen
+
+	pass
+
 
 #----------------------------------------------------------------------------------------
 func DisplayFASScreen():
@@ -159,6 +186,7 @@ func DisplayTitleScreen():
 		ScreenToDisplayNext = FASScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(1) == true:
+		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(2) == true:
@@ -193,14 +221,24 @@ func DisplayOptionsScreen():
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		InterfaceCore.CreateArrowSet(0, 70)
-
-
-
-
-
+#		InterfaceCore.CreateArrowSet(1, 70+50)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
+
+	if InterfaceCore.ThisArrowWasPressed(0) == true:
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(0.5) == true:
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(1.0) == true:
+		print("TEST!")
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(1.5) == true:
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen
@@ -348,7 +386,9 @@ func DisplayAboutScreen():
 #----------------------------------------------------------------------------------------
 func ProcessScreenToDisplay():
 
-	if ScreenToDisplay == FASScreen:
+	if ScreenToDisplay == GodotScreen:
+		DisplayGodotScreen()
+	elif ScreenToDisplay == FASScreen:
 		DisplayFASScreen()
 	elif ScreenToDisplay == TitleScreen:
 		DisplayTitleScreen()

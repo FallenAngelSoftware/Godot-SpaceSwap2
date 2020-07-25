@@ -71,6 +71,9 @@ func _ready():
 	Sprites.SpriteImage[0].set_texture(preload("res://media/images/backgrounds/FadingBlackBG.png"))
 	Sprites.SpriteActive[0] = true
 
+	Sprites.SpriteImage[5].set_texture(preload("res://media/images/logos/GodotLogo.png"))
+	Sprites.SpriteActive[5] = true
+
 	Sprites.SpriteImage[10].set_texture(preload("res://media/images/backgrounds/TitleBG.png"))
 	Sprites.SpriteActive[10] = true
 	
