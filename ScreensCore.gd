@@ -225,26 +225,96 @@ func DisplayOptionsScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "O  P  T  I  O  N  S:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Music Volume:", 75, 70, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 		InterfaceCore.CreateArrowSet(0, 70)
-		InterfaceCore.CreateArrowSet(1, 70+50)
+		if AudioCore.MusicVolume == 1.0:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicVolume == 0.75:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "75%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicVolume == 0.5:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "50%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicVolume == 0.25:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "25%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicVolume == 0.0:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "0%", 75, 70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Sound Effects Volume:", 75, 70+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(1, 70+50)
+		if AudioCore.EffectsVolume == 1.0:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "100%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.EffectsVolume == 0.75:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "75%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.EffectsVolume == 0.5:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "50%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.EffectsVolume == 0.25:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "25%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.EffectsVolume == 0.0:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "0%", 75, 70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 148, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Game Mode:", 75, 70+50+65, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(0, 70+50+65)
+		if LogicCore.GameMode == LogicCore.ChildStoryMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Child Story Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.TeenStoryMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Teen Story Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.AdultStoryMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Adult Story Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.ChildNeverEndMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Child Never Ending Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.TeenNeverEndMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Teen Never Ending Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif LogicCore.GameMode == LogicCore.AdultNeverEndMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Adult Never Ending Mode", 75, 70+50+65, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+
+
+
+
+		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
 
 	if InterfaceCore.ThisArrowWasPressed(0) == true:
-#		print("Arrow 0.0")
+		if AudioCore.MusicVolume > 0.0:
+			AudioCore.MusicVolume-=0.25
+		else:  AudioCore.MusicVolume = 1.0
+
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(0.5) == true:
-#		print("Arrow 0.5")
+		if AudioCore.MusicVolume < 1.0:
+			AudioCore.MusicVolume+=0.25
+		else:  AudioCore.MusicVolume = 0.0
+
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
-	elif InterfaceCore.ThisArrowWasPressed(1.0) == true:
-#		print("Arrow 1.0")
+	if InterfaceCore.ThisArrowWasPressed(1.0) == true:
+		if AudioCore.EffectsVolume > 0.0:
+			AudioCore.EffectsVolume-=0.25
+		else:  AudioCore.EffectsVolume = 1.0
+
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(1.5) == true:
-#		print("Arrow 1.5")
+		if AudioCore.EffectsVolume < 1.0:
+			AudioCore.EffectsVolume+=0.25
+		else:  AudioCore.EffectsVolume = 0.0
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(2.0) == true:
+		if LogicCore.GameMode > 0:
+			LogicCore.GameMode-=1
+		else:  LogicCore.GameMode = 5
+		
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(2.5) == true:
+		if LogicCore.GameMode < 5:
+			LogicCore.GameMode+=1
+		else:  LogicCore.GameMode = 0
+		
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 

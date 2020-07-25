@@ -264,13 +264,13 @@ func ThisArrowWasPressed(var arrowToCheck):
 	if InputCore.JoystickDirection[0] == InputCore.JoyLeft && ArrowSetSelectedByKeyboard == arrowToCheck:
 		ArrowSets.ArrowSetLeftAnimationTimer[(ArrowSetSelectedByKeyboard*2)] = 3
 #		ArrowSets.ArrowSetLeftAnimationTimer[ArrowSetSelectedByKeyboard] = 3
-		InputCore.DelayAllUserInput = 30
+		InputCore.DelayAllUserInput = 20
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		return true
 	elif InputCore.JoystickDirection[0] == InputCore.JoyRight && (ArrowSetSelectedByKeyboard+0.5) == arrowToCheck:
 		ArrowSets.ArrowSetRightAnimationTimer[(ArrowSetSelectedByKeyboard*2)] = 3
 #		ArrowSets.ArrowSetRightAnimationTimer[ArrowSetSelectedByKeyboard] = 3
-		InputCore.DelayAllUserInput = 30
+		InputCore.DelayAllUserInput = 20
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		return true
 	elif InputCore.JoystickDirection[0] == InputCore.JoyUp && NumberOfArrowSetsOnScreen > 1:
@@ -280,7 +280,7 @@ func ThisArrowWasPressed(var arrowToCheck):
 
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
-		InputCore.DelayAllUserInput = 30
+		InputCore.DelayAllUserInput = 10
 	elif InputCore.JoystickDirection[0] == InputCore.JoyDown && NumberOfArrowSetsOnScreen > 1:
 		if ArrowSetSelectedByKeyboard < (NumberOfArrowSetsOnScreen-1):
 			ArrowSetSelectedByKeyboard+=1
@@ -288,7 +288,7 @@ func ThisArrowWasPressed(var arrowToCheck):
 
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
-		InputCore.DelayAllUserInput = 30
+		InputCore.DelayAllUserInput = 10
 
 	if InputCore.MouseButtonLeftPressed == true:
 		for index in range(0, NumberOfArrowSetsOnScreen):
@@ -297,19 +297,15 @@ func ThisArrowWasPressed(var arrowToCheck):
 					ArrowSetSelectedByKeyboard = index
 					ArrowSets.ArrowSetLeftAnimationTimer[(index*2)] = 3
 #					ArrowSets.ArrowSetLeftAnimationTimer[ArrowSetSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 30
+					InputCore.DelayAllUserInput = 20
 					ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
-					
-					print(ArrowSetSelectedByKeyboard)
 					return true
 				elif InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-21) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+21) && InputCore.MouseScreenX > ((VisualsCore.ScreenWidth-30)-25) && InputCore.MouseScreenX < ((VisualsCore.ScreenWidth-30)+25):
 					ArrowSetSelectedByKeyboard = index
 					ArrowSets.ArrowSetRightAnimationTimer[(index*2)] = 3
 #					ArrowSets.ArrowSetRightAnimationTimer[ArrowSetSelectedByKeyboard] = 3
-					InputCore.DelayAllUserInput = 30
+					InputCore.DelayAllUserInput = 20
 					ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
-
-					print(ArrowSetSelectedByKeyboard)
 					return true
 
 	pass
