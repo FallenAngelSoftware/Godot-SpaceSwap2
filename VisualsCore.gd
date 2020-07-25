@@ -76,7 +76,10 @@ func _ready():
 
 	Sprites.SpriteImage[10].set_texture(preload("res://media/images/backgrounds/TitleBG.png"))
 	Sprites.SpriteActive[10] = true
-	
+
+	Sprites.SpriteImage[13].set_texture(preload("res://media/images/gui/ToDoList.png"))
+	Sprites.SpriteActive[13] = true
+
 	Sprites.SpriteImage[20].set_texture(preload("res://media/images/logos/Logo.png"))
 	Sprites.SpriteActive[20] = true
 
@@ -344,7 +347,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("(www.SkyShape.com)", 1.0)
 
 	AddAboutScreenText("''Space Swap 2'' Logo Created In:", 0.0)
-	AddAboutScreenText("Genuine M.S. Office 365 Publisher", 1.0)
+	AddAboutScreenText("Genuine Microsoft Office 365 Publisher", 1.0)
 	AddAboutScreenText("(www.Office.com)", 1.0)
 
 #	AddAboutScreenText("Game Created On A:", 0.0)
@@ -386,7 +389,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''Megalomaniak", 1.0)
 	AddAboutScreenText("''SIsilicon28''", 1.0)
 	AddAboutScreenText("''vimino''", 1.0)
-	AddAboutScreenText("(: ''Purple Conditioner'' :)", 1.0)
+	AddAboutScreenText("(: ''PurpleConditioner'' :)", 1.0)
 	AddAboutScreenText("''Kequc''", 1.0)
 	AddAboutScreenText("''qeed''", 1.0)
 	AddAboutScreenText(" ", 1.0)

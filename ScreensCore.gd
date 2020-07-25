@@ -76,7 +76,7 @@ func ApplyScreenFadeTransition():
 func DisplayGodotScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Made With 100% FREE:", 0, 100, 1, 60, 1.0, 1.0, 0, 0.8, 0.8, 0.8, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Made With 100% FREE:", 0, 100, 1, 60, 1.0, 1.0, 0, 0.6, 0.6, 0.6, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "www.GodotEngine.org", 0, 550, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
@@ -161,6 +161,8 @@ func DisplayTitleScreen():
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 194, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
+		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+
 		var buttonY = 223
 		var buttonOffsetY = 41
 		InterfaceCore.CreateButton (0, (VisualsCore.ScreenWidth/2), (buttonY))
@@ -182,11 +184,12 @@ func DisplayTitleScreen():
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 602, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2021 By Team ''www.FallenAngelSoftware.com''", 0, 640-19, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
+		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
+
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = FASScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(1) == true:
-		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(2) == true:
@@ -221,7 +224,7 @@ func DisplayOptionsScreen():
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		InterfaceCore.CreateArrowSet(0, 70)
-#		InterfaceCore.CreateArrowSet(1, 70+50)
+		InterfaceCore.CreateArrowSet(1, 70+50)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
@@ -233,7 +236,6 @@ func DisplayOptionsScreen():
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(1.0) == true:
-		print("TEST!")
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(1.5) == true:
@@ -258,8 +260,25 @@ func DisplayHowToPlayScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  O  W   T  O   P  L  A  Y:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Objective is to keep pieces", 0, 75, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "from reaching the top.", 0, 75+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "As you play, new pieces", 0, 75+30+50, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "will appear at the bottom.", 0, 75+30+50+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Rearrange the pieces horizontally", 0, 75+30+50+30+50, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "into sets of 3 or more.", 0, 75+30+50+30+50+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "3 or more same pieces horizontally", 0, 75+30+50+30+50+30+50, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "or vertically will be cleared.", 0, 75+30+50+30+50+30+50+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 390, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+		if LogicCore.GameMode == LogicCore.ChildStoryMode || LogicCore.GameMode == LogicCore.TeenStoryMode || LogicCore.GameMode == LogicCore.AdultStoryMode:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Do You Have The Skills", 0, 437, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "To Clear All 9 Levels & Win?", 0, 437+75, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		else:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Do You Have The Skills", 0, 437, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "To Get A New High Score?", 0, 437+75, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
@@ -268,7 +287,6 @@ func DisplayHowToPlayScreen():
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
 		ScreenToDisplayNext = TitleScreen
-
 
 	pass
 
