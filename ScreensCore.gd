@@ -289,6 +289,8 @@ func DisplayOptionsScreen():
 		if AudioCore.MusicVolume > 0.0:
 			AudioCore.MusicVolume-=0.25
 		else:  AudioCore.MusicVolume = 1.0
+		
+		print("0.0")
 
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
@@ -296,13 +298,17 @@ func DisplayOptionsScreen():
 		if AudioCore.MusicVolume < 1.0:
 			AudioCore.MusicVolume+=0.25
 		else:  AudioCore.MusicVolume = 0.0
+		
+		print("0.5")
 
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
-	if InterfaceCore.ThisArrowWasPressed(1.0) == true:
+	elif InterfaceCore.ThisArrowWasPressed(1.0) == true:
 		if AudioCore.EffectsVolume > 0.0:
 			AudioCore.EffectsVolume-=0.25
 		else:  AudioCore.EffectsVolume = 1.0
+		
+		print("1.0")
 
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
@@ -310,6 +316,8 @@ func DisplayOptionsScreen():
 		if AudioCore.EffectsVolume < 1.0:
 			AudioCore.EffectsVolume+=0.25
 		else:  AudioCore.EffectsVolume = 0.0
+		
+		print("1.5")
 
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
@@ -318,6 +326,8 @@ func DisplayOptionsScreen():
 			LogicCore.GameMode-=1
 		else:  LogicCore.GameMode = 5
 		
+		print("2.0")
+
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(2.5) == true:
@@ -325,6 +335,8 @@ func DisplayOptionsScreen():
 			LogicCore.GameMode+=1
 		else:  LogicCore.GameMode = 0
 		
+		print("2.5")
+
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(3.0) == true:
@@ -337,6 +349,8 @@ func DisplayOptionsScreen():
 		elif LogicCore.GameSpeed == 20:
 			LogicCore.GameSpeed = 60
 		
+		print("3.0")
+		
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(3.5) == true:
@@ -348,6 +362,8 @@ func DisplayOptionsScreen():
 			LogicCore.GameSpeed = 45
 		elif LogicCore.GameSpeed == 20:
 			LogicCore.GameSpeed = 30
+		
+		print("3.5")
 		
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
