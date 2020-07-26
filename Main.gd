@@ -21,6 +21,8 @@ func _ready():
 	VisualsCore.DrawSprite(0, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 	VisualsCore.Sprites.SpriteImage[0].set_z_index(1000)
 
+	DataCore.LoadOptionsAndHighScores()
+
 	pass
 
 #----------------------------------------------------------------------------------------

@@ -45,6 +45,18 @@ func ClearHighScores():
 	pass
 
 
+func LoadOptionsAndHighScores():
+
+
+	pass
+
+
+func SaveOptionsAndHighScores():
+
+
+	pass
+
+
 func _ready():
 
 	for x in range(6):

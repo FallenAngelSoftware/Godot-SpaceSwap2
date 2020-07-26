@@ -49,13 +49,13 @@ func _process(delta):
 func ApplyScreenFadeTransition():	
 	if ScreenFadeStatus == FadingFromBlack:
 		if ScreenFadeTransparency > 0.0:
-			ScreenFadeTransparency-=0.1
+			ScreenFadeTransparency-=0.25
 		else:
 			ScreenFadeTransparency = 0.0
 			ScreenFadeStatus = FadingIdle
 	elif ScreenFadeStatus == FadingToBlack:
 		if ScreenFadeTransparency < 1.0:
-			ScreenFadeTransparency+=0.1
+			ScreenFadeTransparency+=0.25
 		else:
 			ScreenFadeTransparency = 1.0
 			ScreenFadeStatus = FadingFromBlack
@@ -94,7 +94,7 @@ func DisplayGodotScreen():
 		ScreenDisplayTimer = -1
 		if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:  AudioCore.PlayEffect(1)
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 		ScreenToDisplayNext = FASScreen
 
 	pass
@@ -144,7 +144,7 @@ func DisplayFASScreen():
 		ScreenDisplayTimer = -1
 		if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:  AudioCore.PlayEffect(1)
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.7:
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 		ScreenToDisplayNext = TitleScreen
 
 		AudioCore.PlayMusic(0)
@@ -167,9 +167,7 @@ func DisplayTitleScreen():
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 194, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
-
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 370, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.15, 0.0, 0.0, 0.0)
+#		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 
 		var buttonY = 223
 		var buttonOffsetY = 41
@@ -210,6 +208,8 @@ func DisplayTitleScreen():
 		ScreenToDisplayNext = AboutScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(5) == true:
+		DataCore.SaveOptionsAndHighScores()
+
 		if OperatingSys == OSWindows:
 			get_tree().quit()
 		elif OperatingSys == OSHTMLFive:
@@ -217,8 +217,8 @@ func DisplayTitleScreen():
 			JavaScript.eval("window.location.replace('http://www.fallenangelsoftware.com');")
 
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-		ScreenToDisplayNext = TitleScreen
+#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+#		ScreenToDisplayNext = TitleScreen
 
 
 	pass
@@ -308,6 +308,7 @@ func DisplayOptionsScreen():
 		InterfaceCore.CreateArrowSet(5, 70+50+65+50+50+70+50+50+50)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(LogicCore.SecretCode[3]), 75, 70+50+65+50+50+70+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
+		DataCore.SaveOptionsAndHighScores()
 
 		VisualsCore.DrawSprite(33, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
@@ -458,8 +459,8 @@ func DisplayOptionsScreen():
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-		ScreenToDisplayNext = TitleScreen
+#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+#		ScreenToDisplayNext = TitleScreen
 
 	pass
 
@@ -497,8 +498,8 @@ func DisplayHowToPlayScreen():
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-		ScreenToDisplayNext = TitleScreen
+#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+#		ScreenToDisplayNext = TitleScreen
 
 	pass
 
@@ -583,9 +584,8 @@ func DisplayHighScoresScreen():
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-		ScreenToDisplayNext = TitleScreen
-
+#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+#		ScreenToDisplayNext = TitleScreen
 
 	pass
 
@@ -609,9 +609,8 @@ func DisplayAboutScreen():
 			if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:  AudioCore.PlayEffect(1)
 			InputCore.DelayAllUserInput = 30
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-		ScreenToDisplayNext = TitleScreen
-
+#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+#		ScreenToDisplayNext = TitleScreen
 
 	pass
 
