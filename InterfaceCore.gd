@@ -278,7 +278,7 @@ func ThisArrowWasPressed(var arrowToCheck):
 
 					InputCore.JoystickDirection[0] = InputCore.JoyRight
 
-				AudioCore.PlayEffect(0)
+#				AudioCore.PlayEffect(0)
 
 	if InputCore.JoystickDirection[0] == InputCore.JoyLeft && ArrowSetSelectedByKeyboard == arrowToCheck:
 		ArrowSets.ArrowSetLeftAnimationTimer[(ArrowSetSelectedByKeyboard*2)] = 3

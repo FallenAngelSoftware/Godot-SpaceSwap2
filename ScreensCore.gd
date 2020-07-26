@@ -82,18 +82,19 @@ func DisplayGodotScreen():
 
 		ScreenDisplayTimer = 200
 
-	if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:
+	if (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
 
 	if 	ScreenDisplayTimer > 1:
 		ScreenDisplayTimer-=1
-	else:
+	elif ScreenDisplayTimer == 1:
 		ScreenToDisplayNext = FASScreen
 		ScreenFadeStatus = FadingToBlack
 		ScreenDisplayTimer = -1
+		if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:  AudioCore.PlayEffect(1)
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
-		ScreenToDisplayNext = TitleScreen
+		ScreenToDisplayNext = FASScreen
 
 	pass
 
@@ -130,15 +131,16 @@ func DisplayFASScreen():
 
 		ScreenDisplayTimer = 750
 
-	if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:
+	if (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
 
 	if 	ScreenDisplayTimer > 1:
 		ScreenDisplayTimer-=1
-	else:
+	elif ScreenDisplayTimer == 1:
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 		ScreenDisplayTimer = -1
+		if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:  AudioCore.PlayEffect(1)
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.7:
 		ScreenToDisplayNext = TitleScreen
@@ -164,6 +166,8 @@ func DisplayTitleScreen():
 
 		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 370, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 
 		var buttonY = 223
 		var buttonOffsetY = 41
