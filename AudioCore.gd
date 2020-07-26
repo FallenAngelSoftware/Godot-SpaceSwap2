@@ -56,7 +56,11 @@ func _ready():
 
 
 func SetMusicAndEffectsVolume(var musicVolume, var effectsVolume):
+	for index in range(0, MusicTotal):
+		MusicPlayer[index].set_volume_db(linear2db(musicVolume))
 
+	for index in range(0, EffectsTotal):
+		EffectPlayer[index].set_volume_db(linear2db(effectsVolume))
 
 	pass
 

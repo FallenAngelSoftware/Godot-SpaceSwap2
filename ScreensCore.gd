@@ -317,6 +317,7 @@ func DisplayOptionsScreen():
 			AudioCore.MusicVolume-=0.25
 		else:  AudioCore.MusicVolume = 1.0
 		
+		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(0.5) == true:
@@ -324,6 +325,7 @@ func DisplayOptionsScreen():
 			AudioCore.MusicVolume+=0.25
 		else:  AudioCore.MusicVolume = 0.0
 		
+		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(1.0) == true:
@@ -331,6 +333,7 @@ func DisplayOptionsScreen():
 			AudioCore.EffectsVolume-=0.25
 		else:  AudioCore.EffectsVolume = 1.0
 		
+		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(1.5) == true:
@@ -338,6 +341,7 @@ func DisplayOptionsScreen():
 			AudioCore.EffectsVolume+=0.25
 		else:  AudioCore.EffectsVolume = 0.0
 		
+		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(2.0) == true:
