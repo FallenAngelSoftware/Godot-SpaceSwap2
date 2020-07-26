@@ -15,16 +15,26 @@ var GameMode = AdultStoryMode
 
 var GameSpeed = 30
 
-var StartingLevel = []
+var StartingLevelForGameMode = []
+var StartingLevel
+
+var SecretCode = []
 
 
 func _ready():
-	StartingLevel.append(0)
-	StartingLevel.append(0)
-	StartingLevel.append(0)
-	StartingLevel.append(0)
-	StartingLevel.append(0)
-	StartingLevel.append(0)
+	StartingLevelForGameMode.append(0)
+	StartingLevelForGameMode.append(0)
+	StartingLevelForGameMode.append(0)
+	StartingLevelForGameMode.append(0)
+	StartingLevelForGameMode.append(0)
+	StartingLevelForGameMode.append(0)
+
+	StartingLevel = StartingLevelForGameMode[GameMode]
+
+	SecretCode.append(0)
+	SecretCode.append(0)
+	SecretCode.append(0)
+	SecretCode.append(0)
 
 
 	pass

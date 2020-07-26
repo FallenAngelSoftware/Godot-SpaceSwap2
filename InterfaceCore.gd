@@ -67,7 +67,7 @@ func InitializeGUI(var createTexts):
 	ArrowSets.ArrowSetRightScale.clear()
 	ArrowSets.ArrowSetTextStringIndex.clear()
 
-	for index in range(0, 10):
+	for index in range(0, 20):
 		ArrowSets.ArrowSetIndex.append(-1)
 		ArrowSets.ArrowSetScreenY.append(-99999)
 		ArrowSets.ArrowSetLeftAnimationTimer.append(-1)
@@ -267,26 +267,11 @@ func ThisArrowWasPressed(var arrowToCheck):
 				if InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-21) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+21) && InputCore.MouseScreenX > (30-25) && InputCore.MouseScreenX < (30+25):
 					ArrowSetSelectedByKeyboard = index
 
-					print(ArrowSetSelectedByKeyboard)
-
 					InputCore.JoystickDirection[0] = InputCore.JoyLeft
 				elif InputCore.MouseScreenY > (ArrowSets.ArrowSetScreenY[index]-21) && InputCore.MouseScreenY < (ArrowSets.ArrowSetScreenY[index]+21) && InputCore.MouseScreenX > ((VisualsCore.ScreenWidth-30)-25) && InputCore.MouseScreenX < ((VisualsCore.ScreenWidth-30)+25):
 					ArrowSetSelectedByKeyboard = index
 
 					InputCore.JoystickDirection[0] = InputCore.JoyRight
-
-					print(ArrowSetSelectedByKeyboard)
-
-
-
-
-
-
-
-
-
-
-
 
 	if InputCore.JoystickDirection[0] == InputCore.JoyLeft && ArrowSetSelectedByKeyboard == arrowToCheck:
 		ArrowSets.ArrowSetLeftAnimationTimer[(ArrowSetSelectedByKeyboard*2)] = 3

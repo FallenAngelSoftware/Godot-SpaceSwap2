@@ -279,10 +279,30 @@ func DisplayOptionsScreen():
 		elif LogicCore.GameSpeed == 60:
 			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Turbo! Game Speed", 75, 70+50+65+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Game Starting Level:", 75, 70+50+65+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(4, 70+50+65+50+50)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Starting Level "+str(LogicCore.StartingLevel), 75, 70+50+65+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 318, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Secret Code #1:", 75, 70+50+65+50+50+70, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(5, 70+50+65+50+50+70)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(LogicCore.SecretCode[0]), 75, 70+50+65+50+50+70, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Secret Code #2:", 75, 70+50+65+50+50+70+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(5, 70+50+65+50+50+70+50)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(LogicCore.SecretCode[1]), 75, 70+50+65+50+50+70+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Secret Code #3:", 75, 70+50+65+50+50+70+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(5, 70+50+65+50+50+70+50+50)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(LogicCore.SecretCode[2]), 75, 70+50+65+50+50+70+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Secret Code #4:", 75, 70+50+65+50+50+70+50+50+50, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateArrowSet(5, 70+50+65+50+50+70+50+50+50)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(LogicCore.SecretCode[3]), 75, 70+50+65+50+50+70+50+50+50, 2, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 
-
-		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+		VisualsCore.DrawSprite(33, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
 
 	if InterfaceCore.ThisArrowWasPressed(0) == true:
@@ -290,8 +310,6 @@ func DisplayOptionsScreen():
 			AudioCore.MusicVolume-=0.25
 		else:  AudioCore.MusicVolume = 1.0
 		
-		print("0.0")
-
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(0.5) == true:
@@ -299,8 +317,6 @@ func DisplayOptionsScreen():
 			AudioCore.MusicVolume+=0.25
 		else:  AudioCore.MusicVolume = 0.0
 		
-		print("0.5")
-
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(1.0) == true:
@@ -308,8 +324,6 @@ func DisplayOptionsScreen():
 			AudioCore.EffectsVolume-=0.25
 		else:  AudioCore.EffectsVolume = 1.0
 		
-		print("1.0")
-
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(1.5) == true:
@@ -317,8 +331,6 @@ func DisplayOptionsScreen():
 			AudioCore.EffectsVolume+=0.25
 		else:  AudioCore.EffectsVolume = 0.0
 		
-		print("1.5")
-
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(2.0) == true:
@@ -326,8 +338,6 @@ func DisplayOptionsScreen():
 			LogicCore.GameMode-=1
 		else:  LogicCore.GameMode = 5
 		
-		print("2.0")
-
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(2.5) == true:
@@ -335,8 +345,6 @@ func DisplayOptionsScreen():
 			LogicCore.GameMode+=1
 		else:  LogicCore.GameMode = 0
 		
-		print("2.5")
-
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisArrowWasPressed(3.0) == true:
@@ -348,8 +356,6 @@ func DisplayOptionsScreen():
 			LogicCore.GameSpeed = 20
 		elif LogicCore.GameSpeed == 20:
 			LogicCore.GameSpeed = 60
-		
-		print("3.0")
 		
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
@@ -363,10 +369,79 @@ func DisplayOptionsScreen():
 		elif LogicCore.GameSpeed == 20:
 			LogicCore.GameSpeed = 30
 		
-		print("3.5")
-		
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(4.0) == true:
+		if LogicCore.StartingLevel > 0:
+			LogicCore.StartingLevel-=1
+		else:  LogicCore.StartingLevel = LogicCore.StartingLevelForGameMode[LogicCore.GameMode]
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(4.5) == true:
+		if LogicCore.StartingLevel < LogicCore.StartingLevelForGameMode[LogicCore.GameMode]:
+			LogicCore.StartingLevel+=1
+		else:  LogicCore.StartingLevel = 0
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(5.0) == true:
+		if LogicCore.SecretCode[0] > 0:
+			LogicCore.SecretCode[0]-=1
+		else:  LogicCore.SecretCode[0] = 9
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(5.5) == true:
+		if LogicCore.SecretCode[0] < 9:
+			LogicCore.SecretCode[0]+=1
+		else:  LogicCore.SecretCode[0] = 0
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(6.0) == true:
+		if LogicCore.SecretCode[1] > 0:
+			LogicCore.SecretCode[1]-=1
+		else:  LogicCore.SecretCode[1] = 9
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(6.5) == true:
+		if LogicCore.SecretCode[1] < 9:
+			LogicCore.SecretCode[1]+=1
+		else:  LogicCore.SecretCode[1] = 0
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(7.0) == true:
+		if LogicCore.SecretCode[2] > 0:
+			LogicCore.SecretCode[2]-=1
+		else:  LogicCore.SecretCode[2] = 9
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(7.5) == true:
+		if LogicCore.SecretCode[2] < 9:
+			LogicCore.SecretCode[2]+=1
+		else:  LogicCore.SecretCode[2] = 0
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(8.0) == true:
+		if LogicCore.SecretCode[3] > 0:
+			LogicCore.SecretCode[3]-=1
+		else:  LogicCore.SecretCode[3] = 9
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(8.5) == true:
+		if LogicCore.SecretCode[3] < 9:
+			LogicCore.SecretCode[3]+=1
+		else:  LogicCore.SecretCode[3] = 0
+
+		ScreenToDisplayNext = OptionsScreen
+		ScreenFadeStatus = FadingToBlack
+
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen

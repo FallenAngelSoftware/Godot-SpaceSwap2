@@ -87,7 +87,7 @@ func _ready():
 	Sprites.SpriteActive[25] = true
 
 	
-	for index in range(30, 35):
+	for index in range(30, 40):
 		Sprites.SpriteImage[index].set_texture(preload("res://media/images/gui/ScreenLine.png"))
 		Sprites.SpriteActive[index] = true
 
@@ -107,7 +107,7 @@ func _ready():
 	Sprites.SpriteImage[60].set_texture(preload("res://media/images/gui/SelectorLine.png"))
 	Sprites.SpriteActive[60] = true
 
-	for index in range(80, 90, 2):
+	for index in range(80, 100, 2):
 		Sprites.SpriteImage[index].set_texture(preload("res://media/images/gui/ButtonSelectorLeft.png"))
 		Sprites.SpriteActive[index] = true
 		Sprites.SpriteImage[index+1].set_texture(preload("res://media/images/gui/ButtonSelectorRight.png"))
