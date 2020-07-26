@@ -82,8 +82,9 @@ func DisplayGodotScreen():
 
 		ScreenDisplayTimer = 200
 
-	if (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true) && ScreenDisplayTimer > 1:
+	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
+		InputCore.DelayAllUserInput = 50
 
 	if 	ScreenDisplayTimer > 1:
 		ScreenDisplayTimer-=1
@@ -131,8 +132,9 @@ func DisplayFASScreen():
 
 		ScreenDisplayTimer = 750
 
-	if (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true) && ScreenDisplayTimer > 1:
+	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
+		InputCore.DelayAllUserInput = 50
 
 	if 	ScreenDisplayTimer > 1:
 		ScreenDisplayTimer-=1
@@ -167,7 +169,7 @@ func DisplayTitleScreen():
 		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 370, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 370, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.15, 0.0, 0.0, 0.0)
 
 		var buttonY = 223
 		var buttonOffsetY = 41
@@ -596,9 +598,12 @@ func DisplayAboutScreen():
 		VisualsCore.Texts.TextImage[index].rect_global_position.y-=3
 
 	if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y != -99999: # BANDAID - FIX IT
-		if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45 || InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:
+		if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45 || (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)):
 			ScreenToDisplayNext = TitleScreen
 			ScreenFadeStatus = FadingToBlack
+			
+			if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:  AudioCore.PlayEffect(1)
+			InputCore.DelayAllUserInput = 30
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
 		ScreenToDisplayNext = TitleScreen

@@ -37,7 +37,7 @@ func _ready():
 #----------------------------------------------------------------------------------------
 func _process(delta):
 
-	if DelayAllUserInput > 0:
+	if DelayAllUserInput > -1:
 		DelayAllUserInput-=1
 
 
