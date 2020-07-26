@@ -284,7 +284,8 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("Original Concept By:", 0.0)
 	AddAboutScreenText("Nintendo", 1.0)
 
-	AddAboutScreenText("Made With 100% FREE ''Godot Game engine'':", 0.0)
+	AddAboutScreenText("Made With 100% FREE:", 0.0)
+	AddAboutScreenText("''Godot Game engine''", 1.0)
 	AddAboutScreenText("(www.GodotEngine.org)", 1.0)
 
 	AddAboutScreenText("Game Built On:", 0.0)
