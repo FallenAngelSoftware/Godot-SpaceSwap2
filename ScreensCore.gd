@@ -140,9 +140,10 @@ func DisplayFASScreen():
 		ScreenFadeStatus = FadingToBlack
 		ScreenDisplayTimer = -1
 
-	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 1.0:
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.7:
 		ScreenToDisplayNext = TitleScreen
 
+		AudioCore.PlayMusic(0)
 
 	pass
 

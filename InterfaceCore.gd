@@ -171,19 +171,24 @@ func ThisButtonWasPressed(var buttonToCheck):
 					ButtonSelectedByKeyboard-=1
 				else:
 					ButtonSelectedByKeyboard = NumberOfButtonsOnScreen-1
-		
+
+				AudioCore.PlayEffect(0)
+
 				InputCore.DelayAllUserInput = 10
 			elif InputCore.JoystickDirection[0] == InputCore.JoyDown:
 				if ButtonSelectedByKeyboard < (NumberOfButtonsOnScreen-1):
 					ButtonSelectedByKeyboard+=1
 				else:
 					ButtonSelectedByKeyboard = 0
-		
+
+				AudioCore.PlayEffect(0)
+
 				InputCore.DelayAllUserInput = 10
 		
 			if InputCore.KeyboardEnterPressed == true:
 				if buttonToCheck == ButtonSelectedByKeyboard:
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
+					AudioCore.PlayEffect(1)
 					InputCore.DelayAllUserInput = 30
 					return true
 
@@ -191,9 +196,9 @@ func ThisButtonWasPressed(var buttonToCheck):
 				if InputCore.MouseScreenY > (Buttons.ButtonScreenY[index]-21) && InputCore.MouseScreenY < (Buttons.ButtonScreenY[index]+21) && InputCore.MouseScreenX > (Buttons.ButtonScreenX[index]-127) && InputCore.MouseScreenX < (Buttons.ButtonScreenX[index]+127):
 					ButtonSelectedByKeyboard = index
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
+					AudioCore.PlayEffect(1)
 					InputCore.DelayAllUserInput = 30
 					return true
-
 
 	pass
 
@@ -273,15 +278,19 @@ func ThisArrowWasPressed(var arrowToCheck):
 
 					InputCore.JoystickDirection[0] = InputCore.JoyRight
 
+				AudioCore.PlayEffect(0)
+
 	if InputCore.JoystickDirection[0] == InputCore.JoyLeft && ArrowSetSelectedByKeyboard == arrowToCheck:
 		ArrowSets.ArrowSetLeftAnimationTimer[(ArrowSetSelectedByKeyboard*2)] = 3
 		InputCore.DelayAllUserInput = 20
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
+		AudioCore.PlayEffect(0)
 		return true
 	elif InputCore.JoystickDirection[0] == InputCore.JoyRight && (ArrowSetSelectedByKeyboard+0.5) == arrowToCheck:
 		ArrowSets.ArrowSetRightAnimationTimer[(ArrowSetSelectedByKeyboard*2)] = 3
 		InputCore.DelayAllUserInput = 20
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
+		AudioCore.PlayEffect(0)
 		return true
 	elif InputCore.JoystickDirection[0] == InputCore.JoyUp && NumberOfArrowSetsOnScreen > 1:
 		if ArrowSetSelectedByKeyboard > 0:
@@ -290,6 +299,7 @@ func ThisArrowWasPressed(var arrowToCheck):
 
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+		AudioCore.PlayEffect(0)
 		InputCore.DelayAllUserInput = 10
 	elif InputCore.JoystickDirection[0] == InputCore.JoyDown && NumberOfArrowSetsOnScreen > 1:
 		if ArrowSetSelectedByKeyboard < (NumberOfArrowSetsOnScreen-1):
@@ -298,6 +308,7 @@ func ThisArrowWasPressed(var arrowToCheck):
 
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
+		AudioCore.PlayEffect(0)
 		InputCore.DelayAllUserInput = 10
 
 	pass
