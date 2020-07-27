@@ -48,8 +48,6 @@ func ClearHighScores():
 
 
 func LoadOptionsAndHighScores():
-	return
-
 	var player
 	var file = File.new()
 	if file.file_exists(FILE_NAME):
@@ -69,30 +67,34 @@ func LoadOptionsAndHighScores():
 	AudioCore.EffectsVolume = player.EffectsVolumeValue
 	LogicCore.GameMode = player.GameModeValue
 	LogicCore.GameSpeed = player.GameSpeedValue
-	LogicCore.StartingLevelForGameMode[0] = player.GameStartingLevel0
-	LogicCore.StartingLevelForGameMode[1] = player.GameStartingLevel1
-	LogicCore.StartingLevelForGameMode[2] = player.GameStartingLevel2
-	LogicCore.StartingLevelForGameMode[3] = player.GameStartingLevel3
-	LogicCore.StartingLevelForGameMode[4] = player.GameStartingLevel4
-	LogicCore.StartingLevelForGameMode[5] = player.GameStartingLevel5
+	LogicCore.StartingLevelForGameMode[0] = player.GameStartingLevel0Value
+	LogicCore.StartingLevelForGameMode[1] = player.GameStartingLevel1Value
+	LogicCore.StartingLevelForGameMode[2] = player.GameStartingLevel2Value
+	LogicCore.StartingLevelForGameMode[3] = player.GameStartingLevel3Value
+	LogicCore.StartingLevelForGameMode[4] = player.GameStartingLevel4Value
+	LogicCore.StartingLevelForGameMode[5] = player.GameStartingLevel5Value
+	HighScoreName = player.HighscoreNameValue
+	HighScoreLevel = player.HighScoreLevelValue
+	HighScoreScore = player.HighScoreScoreValue
 
 	pass
 
 
 func SaveOptionsAndHighScores():
-	return
-
 	var player = {
 		"MusicVolumeValue": AudioCore.MusicVolume,
 		"EffectsVolumeValue": AudioCore.EffectsVolume,
 		"GameModeValue": LogicCore.GameMode,
 		"GameSpeedValue": LogicCore.GameSpeed,
-		"GameStartingLevel0": LogicCore.StartingLevelForGameMode[0],
-		"GameStartingLevel1": LogicCore.StartingLevelForGameMode[1],
-		"GameStartingLevel2": LogicCore.StartingLevelForGameMode[2],
-		"GameStartingLevel3": LogicCore.StartingLevelForGameMode[3],
-		"GameStartingLevel4": LogicCore.StartingLevelForGameMode[4],
-		"GameStartingLevel5": LogicCore.StartingLevelForGameMode[5]
+		"GameStartingLevel0Value": LogicCore.StartingLevelForGameMode[0],
+		"GameStartingLevel1Value": LogicCore.StartingLevelForGameMode[1],
+		"GameStartingLevel2Value": LogicCore.StartingLevelForGameMode[2],
+		"GameStartingLevel3Value": LogicCore.StartingLevelForGameMode[3],
+		"GameStartingLevel4Value": LogicCore.StartingLevelForGameMode[4],
+		"GameStartingLevel5Value": LogicCore.StartingLevelForGameMode[5],
+		"HighscoreNameValue": HighScoreName,
+		"HighScoreLevelValue": HighScoreLevel,
+		"HighScoreScoreValue": HighScoreScore
 	}
 
 	var file = File.new()
