@@ -6,6 +6,8 @@ var HighScoreName = []
 var HighScoreLevel = []
 var HighScoreScore = []
 
+const FILE_NAME = "user://game-data.json"
+
 
 func ClearHighScores():
 	for mode in range(0, 6):
@@ -46,19 +48,62 @@ func ClearHighScores():
 
 
 func LoadOptionsAndHighScores():
+	return
 
+	var player
+	var file = File.new()
+	if file.file_exists(FILE_NAME):
+		file.open(FILE_NAME, File.READ)
+		var data = parse_json(file.get_as_text())
+		file.close()
+		if typeof(data) == TYPE_DICTIONARY:
+			player = data
+		else:
+			printerr("Corrupted data!")
+			return false
+	else:
+		printerr("No saved data!")
+		return false
+
+	AudioCore.MusicVolume = player.MusicVolumeValue
+	AudioCore.EffectsVolume = player.EffectsVolumeValue
+	LogicCore.GameMode = player.GameModeValue
+	LogicCore.GameSpeed = player.GameSpeedValue
+	LogicCore.StartingLevelForGameMode[0] = player.GameStartingLevel0
+	LogicCore.StartingLevelForGameMode[1] = player.GameStartingLevel1
+	LogicCore.StartingLevelForGameMode[2] = player.GameStartingLevel2
+	LogicCore.StartingLevelForGameMode[3] = player.GameStartingLevel3
+	LogicCore.StartingLevelForGameMode[4] = player.GameStartingLevel4
+	LogicCore.StartingLevelForGameMode[5] = player.GameStartingLevel5
 
 	pass
 
 
 func SaveOptionsAndHighScores():
+	return
 
+	var player = {
+		"MusicVolumeValue": AudioCore.MusicVolume,
+		"EffectsVolumeValue": AudioCore.EffectsVolume,
+		"GameModeValue": LogicCore.GameMode,
+		"GameSpeedValue": LogicCore.GameSpeed,
+		"GameStartingLevel0": LogicCore.StartingLevelForGameMode[0],
+		"GameStartingLevel1": LogicCore.StartingLevelForGameMode[1],
+		"GameStartingLevel2": LogicCore.StartingLevelForGameMode[2],
+		"GameStartingLevel3": LogicCore.StartingLevelForGameMode[3],
+		"GameStartingLevel4": LogicCore.StartingLevelForGameMode[4],
+		"GameStartingLevel5": LogicCore.StartingLevelForGameMode[5]
+	}
+
+	var file = File.new()
+	file.open(FILE_NAME, File.WRITE)
+	file.store_string(to_json(player))
+	file.close()
 
 	pass
 
 
 func _ready():
-
 	for x in range(6):
 		HighScoreName.append([])
 		HighScoreName[x].resize(10)
@@ -78,7 +123,6 @@ func _ready():
 			HighScoreScore[xS][yS] = null
 
 	ClearHighScores()
-		
 
 	pass
 

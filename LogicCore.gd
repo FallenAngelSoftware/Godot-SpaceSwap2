@@ -19,6 +19,7 @@ var StartingLevelForGameMode = []
 var StartingLevel
 
 var SecretCode = []
+var SecretCodeCombined = 0
 
 
 func _ready():

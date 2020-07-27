@@ -16,12 +16,16 @@ extends Node
 
 #----------------------------------------------------------------------------------------
 func _ready():
-	Engine.target_fps = 30
-	
-	VisualsCore.DrawSprite(0, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-	VisualsCore.Sprites.SpriteImage[0].set_z_index(1000)
+#	Engine.target_fps = 30
+
 
 	DataCore.LoadOptionsAndHighScores()
+
+#	if VisualsCore.DEBUG == true:
+#		LogicCore.SecretCode[0] = 5
+#		LogicCore.SecretCode[1] = 4
+#		LogicCore.SecretCode[2] = 3
+#		LogicCore.SecretCode[3] = 1
 
 	pass
 
@@ -30,5 +34,6 @@ func _process(delta):
 
 	ScreensCore.ProcessScreenToDisplay()
 
-
+#                                            [TM]
+# "A 110% By Team "www.FallenAngelSoftware.com"!
 	pass

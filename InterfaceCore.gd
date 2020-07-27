@@ -184,12 +184,15 @@ func ThisButtonWasPressed(var buttonToCheck):
 				AudioCore.PlayEffect(0)
 
 				InputCore.DelayAllUserInput = 10
-		
+
 			if InputCore.KeyboardEnterPressed == true:
 				if buttonToCheck == ButtonSelectedByKeyboard:
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
 					AudioCore.PlayEffect(1)
 					InputCore.DelayAllUserInput = 30
+					
+#					print(ButtonSelectedByKeyboard)
+					
 					return true
 
 			if InputCore.MouseButtonLeftPressed == true:
@@ -198,6 +201,9 @@ func ThisButtonWasPressed(var buttonToCheck):
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
 					AudioCore.PlayEffect(1)
 					InputCore.DelayAllUserInput = 30
+					
+#					print(ButtonSelectedByKeyboard)
+
 					return true
 
 	pass

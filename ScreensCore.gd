@@ -16,6 +16,7 @@ const OptionsScreen			= 3
 const HowToPlayScreen		= 4
 const HighScoresScreen		= 5
 const AboutScreen			= 6
+const MusicTestScreen		= 7
 
 var ScreenToDisplay
 var ScreenToDisplayNext
@@ -48,13 +49,15 @@ func _process(delta):
 #----------------------------------------------------------------------------------------
 func ApplyScreenFadeTransition():	
 	if ScreenFadeStatus == FadingFromBlack:
-		if ScreenFadeTransparency > 0.0:
+		if ScreenFadeTransparency > 0.25:
 			ScreenFadeTransparency-=0.25
 		else:
 			ScreenFadeTransparency = 0.0
 			ScreenFadeStatus = FadingIdle
+
+#		print("Fade In:"+str(ScreenFadeTransparency))
 	elif ScreenFadeStatus == FadingToBlack:
-		if ScreenFadeTransparency < 1.0:
+		if ScreenFadeTransparency < 0.75:
 			ScreenFadeTransparency+=0.25
 		else:
 			ScreenFadeTransparency = 1.0
@@ -66,9 +69,11 @@ func ApplyScreenFadeTransition():
 			InterfaceCore.InitializeGUI(false)
 
 			ScreenToDisplay = ScreenToDisplayNext
+
+#		print("Fade Out:"+str(ScreenFadeTransparency))
 	
 	VisualsCore.Sprites.SpriteImage[0].modulate = Color(1.0, 1.0, 1.0, ScreenFadeTransparency)
-	
+
 	pass
 
 
@@ -80,7 +85,7 @@ func DisplayGodotScreen():
 		VisualsCore.DrawSprite(5, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "www.GodotEngine.org", 0, 550, 1, 60, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		ScreenDisplayTimer = 200
+		ScreenDisplayTimer = (200*2)
 
 	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
@@ -130,7 +135,7 @@ func DisplayFASScreen():
 		VisualsCore.DrawSprite(33, VisualsCore.ScreenWidth/2, 640-48, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Click Left Mouse Button Or Press Keyboard [Spacebar] To Continue!", 0, 640-25, 1, 16+30+30, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
-		ScreenDisplayTimer = 750
+		ScreenDisplayTimer = (750*2)
 
 	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
@@ -183,8 +188,10 @@ func DisplayTitleScreen():
 		buttonY+=buttonOffsetY
 		InterfaceCore.CreateButton (5, (VisualsCore.ScreenWidth/2), (buttonY))
 		buttonY+=buttonOffsetY
-#		InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2), (buttonY))
-#		buttonY+=buttonOffsetY
+
+		if (LogicCore.SecretCodeCombined == 5432 || LogicCore.SecretCodeCombined == 5431):
+			InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2), (buttonY))
+			buttonY+=buttonOffsetY
 
 		VisualsCore.DrawSprite(25, VisualsCore.ScreenWidth/2, 540, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 602, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
@@ -209,17 +216,24 @@ func DisplayTitleScreen():
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(5) == true:
 		DataCore.SaveOptionsAndHighScores()
-
 		if OperatingSys == OSWindows:
 			get_tree().quit()
 		elif OperatingSys == OSHTMLFive:
 #			OS.shell_open("http://fallenangelsoftware.com")
 			JavaScript.eval("window.location.replace('http://www.fallenangelsoftware.com');")
 
+	if (LogicCore.SecretCodeCombined == 5432 || LogicCore.SecretCodeCombined == 5431):
+		if InterfaceCore.ThisButtonWasPressed(6) == true:
+			ScreenToDisplayNext = MusicTestScreen
+			ScreenFadeStatus = FadingToBlack
+
+			if AudioCore.MusicVolume == 0.0:
+				AudioCore.MusicVolume = 1.0
+				AudioCore.EffectsVolume = 1.0	
+				AudioCore.PlayMusic(0)
 
 #	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 #		ScreenToDisplayNext = TitleScreen
-
 
 	pass
 
@@ -459,8 +473,12 @@ func DisplayOptionsScreen():
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
-#	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+		LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
+
+
 #		ScreenToDisplayNext = TitleScreen
+
 
 	pass
 
@@ -599,7 +617,7 @@ func DisplayAboutScreen():
 		VisualsCore.LoadAboutScreenTexts()
 
 	for index in range(VisualsCore.AboutTextsStartIndex, VisualsCore.AboutTextsEndIndex):
-		VisualsCore.Texts.TextImage[index].rect_global_position.y-=3
+		VisualsCore.Texts.TextImage[index].rect_global_position.y-=1.5 # 3
 
 	if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y != -99999: # BANDAID - FIX IT
 		if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45 || (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)):
@@ -611,6 +629,74 @@ func DisplayAboutScreen():
 
 #	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 #		ScreenToDisplayNext = TitleScreen
+
+	pass
+
+
+#----------------------------------------------------------------------------------------
+func DisplayMusicTestScreen():
+	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
+		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
+		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 0.5)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "B . G . M .   M  U  S  I  C   T  E  S  T:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+ 
+		InterfaceCore.CreateArrowSet(0, (VisualsCore.ScreenHeight/2))
+		if AudioCore.MusicCurrentlyPlaying == 0:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Title", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 1:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Title 2", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 2:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Story Intro", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 3:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Story InGame Start", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 4:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Story InGame Middle", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 5:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Story InGame End", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 6:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: InGame Never Ending", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 7:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: New High Score", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 8:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: New Top High Score", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 9:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Ending", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		elif AudioCore.MusicCurrentlyPlaying == 10:
+			VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "BGM: Ending(Turbo!)", 0, (VisualsCore.ScreenHeight/2), 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
+		InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
+
+	if InterfaceCore.ThisArrowWasPressed(0.0):
+		if AudioCore.MusicCurrentlyPlaying > 0:
+			AudioCore.PlayMusic(AudioCore.MusicCurrentlyPlaying-1)
+		else:
+			if LogicCore.SecretCodeCombined == 5431:
+				AudioCore.PlayMusic(AudioCore.MusicTotal-1)
+			else:  AudioCore.PlayMusic(AudioCore.MusicTotal-3)
+
+		ScreenToDisplayNext = MusicTestScreen
+		ScreenFadeStatus = FadingToBlack
+	elif InterfaceCore.ThisArrowWasPressed(0.5):
+		if LogicCore.SecretCodeCombined == 5431:
+			if AudioCore.MusicCurrentlyPlaying < (AudioCore.MusicTotal-1):
+				AudioCore.PlayMusic(AudioCore.MusicCurrentlyPlaying+1)
+			else:  AudioCore.PlayMusic(0)
+		else:
+			if AudioCore.MusicCurrentlyPlaying < (AudioCore.MusicTotal-3):
+				AudioCore.PlayMusic(AudioCore.MusicCurrentlyPlaying+1)
+			else:  AudioCore.PlayMusic(0)
+
+		ScreenToDisplayNext = MusicTestScreen
+		ScreenFadeStatus = FadingToBlack
+	if InterfaceCore.ThisButtonWasPressed(0) == true:
+		ScreenToDisplayNext = TitleScreen
+		ScreenFadeStatus = FadingToBlack
+
+	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
+#		ScreenToDisplayNext = TitleScreen
+		if ScreenToDisplayNext == TitleScreen:  AudioCore.PlayMusic(0)
 
 	pass
 
@@ -632,6 +718,8 @@ func ProcessScreenToDisplay():
 		DisplayHighScoresScreen()
 	elif ScreenToDisplay == AboutScreen:
 		DisplayAboutScreen()
+	elif ScreenToDisplay == MusicTestScreen:
+		DisplayMusicTestScreen()
 
 
 	InterfaceCore.DrawAllButtons()

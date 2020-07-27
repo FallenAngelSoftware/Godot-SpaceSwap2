@@ -135,6 +135,8 @@ func _ready():
 	Sprites.SpriteImage[60].scale = Vector2(2.845, 1.0)
 	Sprites.SpriteImage[60].modulate = Color(1.0, 1.0, 1.0, 0.4)
 	
+	DrawSprite(0, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+	Sprites.SpriteImage[0].set_z_index(1000)
 
 	pass
 
