@@ -174,6 +174,7 @@ func DisplayTitleScreen():
 		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 425, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 
 		var buttonY = 223
 		var buttonOffsetY = 41

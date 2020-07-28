@@ -130,22 +130,22 @@ func DrawAllButtons():
 				VisualsCore.Sprites.SpriteImage[40+index].scale = Vector2(0.85, 0.85)
 				VisualsCore.DrawnTextChangeScaleRotation(Buttons.ButtonIndex[index], 0.85, 0.85, 0)
 				VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].rect_global_position.x = (Buttons.ButtonScreenX[index]-(((textWidth-(textWidth*0.85)) / 2) + ((textWidth*0.85) / 2)))
-				Buttons.ButtonAnimationTimer[index]-=1
+#				Buttons.ButtonAnimationTimer[index]-=1
 			elif Buttons.ButtonAnimationTimer[index] == 2:
 				VisualsCore.Sprites.SpriteImage[40+index].scale = Vector2(0.90, 0.90)
 				VisualsCore.DrawnTextChangeScaleRotation(Buttons.ButtonIndex[index], 0.90, 0.90, 0)
 				VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].rect_global_position.x = (Buttons.ButtonScreenX[index]-(((textWidth-(textWidth*0.90)) / 2) + ((textWidth*0.90) / 2)))
-				Buttons.ButtonAnimationTimer[index]-=1
+#				Buttons.ButtonAnimationTimer[index]-=1
 			elif Buttons.ButtonAnimationTimer[index] == 1:
 				VisualsCore.Sprites.SpriteImage[40+index].scale = Vector2(0.95, 0.95)
 				VisualsCore.DrawnTextChangeScaleRotation(Buttons.ButtonIndex[index], 0.95, 0.95, 0)
 				VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].rect_global_position.x = (Buttons.ButtonScreenX[index]-(((textWidth-(textWidth*0.95)) / 2) + ((textWidth*0.95) / 2)))
-				Buttons.ButtonAnimationTimer[index]-=1
+#				Buttons.ButtonAnimationTimer[index]-=1
 			elif Buttons.ButtonAnimationTimer[index] == 0:
 				VisualsCore.Sprites.SpriteImage[40+index].scale = Vector2(1.0, 1.0)
 				VisualsCore.DrawnTextChangeScaleRotation(Buttons.ButtonIndex[index], 1.0, 1.0, 0)
 				VisualsCore.Texts.TextImage[Buttons.ButtonIndex[index]].rect_global_position.x = (Buttons.ButtonScreenX[index]-(((textWidth-(textWidth*1.0)) / 2) + ((textWidth*1.0) / 2)))
-				Buttons.ButtonAnimationTimer[index] = -1
+#				Buttons.ButtonAnimationTimer[index] = -1
 					
 			VisualsCore.Sprites.SpriteImage[40+index].global_position = Vector2(Buttons.ButtonScreenX[index], Buttons.ButtonScreenY[index])
 
@@ -190,21 +190,18 @@ func ThisButtonWasPressed(var buttonToCheck):
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
 					AudioCore.PlayEffect(1)
 					InputCore.DelayAllUserInput = 30
-					
-#					print(ButtonSelectedByKeyboard)
-					
-					return true
 
-			if InputCore.MouseButtonLeftPressed == true:
-				if InputCore.MouseScreenY > (Buttons.ButtonScreenY[index]-21) && InputCore.MouseScreenY < (Buttons.ButtonScreenY[index]+21) && InputCore.MouseScreenX > (Buttons.ButtonScreenX[index]-127) && InputCore.MouseScreenX < (Buttons.ButtonScreenX[index]+127):
-					ButtonSelectedByKeyboard = index
-					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
-					AudioCore.PlayEffect(1)
-					InputCore.DelayAllUserInput = 30
-					
-#					print(ButtonSelectedByKeyboard)
+			if Buttons.ButtonAnimationTimer[index] > -1:
+				Buttons.ButtonAnimationTimer[index]-=1
+				if Buttons.ButtonAnimationTimer[index] == -1:  return true
 
-					return true
+	if InputCore.MouseButtonLeftPressed == true:
+		for index in range (0, NumberOfButtonsOnScreen):
+			if InputCore.MouseScreenY > (Buttons.ButtonScreenY[index]-21) && InputCore.MouseScreenY < (Buttons.ButtonScreenY[index]+21) && InputCore.MouseScreenX > (Buttons.ButtonScreenX[index]-127) && InputCore.MouseScreenX < (Buttons.ButtonScreenX[index]+127):
+				ButtonSelectedByKeyboard = index
+				Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
+				AudioCore.PlayEffect(1)
+				InputCore.DelayAllUserInput = 30
 
 	pass
 
