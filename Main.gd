@@ -18,14 +18,8 @@ extends Node
 func _ready():
 #	Engine.target_fps = 30
 
-
 	DataCore.LoadOptionsAndHighScores()
 
-#	if VisualsCore.DEBUG == true:
-#		LogicCore.SecretCode[0] = 5
-#		LogicCore.SecretCode[1] = 4
-#		LogicCore.SecretCode[2] = 3
-#		LogicCore.SecretCode[3] = 1
 
 	pass
 

@@ -172,7 +172,8 @@ func DisplayTitleScreen():
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 194, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
-#		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
+
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 425, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 
 		var buttonY = 223
 		var buttonOffsetY = 41
@@ -229,7 +230,8 @@ func DisplayTitleScreen():
 
 			if AudioCore.MusicVolume == 0.0:
 				AudioCore.MusicVolume = 1.0
-				AudioCore.EffectsVolume = 1.0	
+				AudioCore.EffectsVolume = 1.0
+				AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 				AudioCore.PlayMusic(0)
 
 #	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
