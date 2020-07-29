@@ -36,11 +36,8 @@ func _ready():
 
 #----------------------------------------------------------------------------------------
 func _process(delta):
-
 	if DelayAllUserInput > -1:
 		DelayAllUserInput-=1
-
-
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -80,5 +77,4 @@ func _input(event):
 		MouseScreenX = event.position.x
 		MouseScreenY = event.position.y
 
-	
 	pass

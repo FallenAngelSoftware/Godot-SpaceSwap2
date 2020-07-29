@@ -20,7 +20,6 @@ func _ready():
 
 	DataCore.LoadOptionsAndHighScores()
 
-
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -28,6 +27,6 @@ func _process(delta):
 
 	ScreensCore.ProcessScreenToDisplay()
 
+	pass
 #                                            [TM]
 # "A 110% By Team "www.FallenAngelSoftware.com"!
-	pass

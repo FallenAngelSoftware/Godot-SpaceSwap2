@@ -1,14 +1,13 @@
 # "DataCore.gd"
 extends Node
 
-
 var HighScoreName = []
 var HighScoreLevel = []
 var HighScoreScore = []
 
 const FILE_NAME = "user://game-data.json"
 
-
+#----------------------------------------------------------------------------------------
 func ClearHighScores():
 	for mode in range(0, 6):
 		HighScoreName[mode][0] = "JeZxLee"
@@ -43,10 +42,9 @@ func ClearHighScores():
 		HighScoreScore[mode][7] = 3000
 		HighScoreScore[mode][8] = 2000
 		HighScoreScore[mode][9] = 1000
-
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func LoadOptionsAndHighScores():
 	var player
 	var file = File.new()
@@ -79,7 +77,7 @@ func LoadOptionsAndHighScores():
 
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func SaveOptionsAndHighScores():
 	var player = {
 		"MusicVolumeValue": AudioCore.MusicVolume,
@@ -104,7 +102,7 @@ func SaveOptionsAndHighScores():
 
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func _ready():
 	for x in range(6):
 		HighScoreName.append([])
@@ -128,10 +126,7 @@ func _ready():
 
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func _process(delta):
-	
-	
-	pass
-	
 
+	pass

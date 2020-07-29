@@ -45,13 +45,11 @@ var Texts = TextClass.new()
 
 class AboutText:
 	var AboutTextsText = []
-#	var AboutTextsScreenY = []
 	var AboutTextsBlue = []
 var AboutTexts = AboutText.new()
 
 var AboutTextsStartIndex
 var AboutTextsEndIndex
-
 
 #----------------------------------------------------------------------------------------
 func _ready():
@@ -85,25 +83,20 @@ func _ready():
 
 	Sprites.SpriteImage[25].set_texture(preload("res://media/images/logos/GooglePlayLogo.png"))
 	Sprites.SpriteActive[25] = true
-
 	
 	for index in range(30, 40):
 		Sprites.SpriteImage[index].set_texture(preload("res://media/images/gui/ScreenLine.png"))
 		Sprites.SpriteActive[index] = true
 
-
 	for index in range(40, 50):
 		Sprites.SpriteImage[index].set_texture(preload("res://media/images/gui/Button.png"))
 		Sprites.SpriteActive[index] = true
-
 
 	Sprites.SpriteImage[50].set_texture(preload("res://media/images/gui/ButtonSelectorLeft.png"))
 	Sprites.SpriteActive[50] = true
 	Sprites.SpriteImage[51].set_texture(preload("res://media/images/gui/ButtonSelectorRight.png"))
 	Sprites.SpriteActive[51] = true
 
-
-#	for index in range(60, 70):
 	Sprites.SpriteImage[60].set_texture(preload("res://media/images/gui/SelectorLine.png"))
 	Sprites.SpriteActive[60] = true
 
@@ -112,7 +105,6 @@ func _ready():
 		Sprites.SpriteActive[index] = true
 		Sprites.SpriteImage[index+1].set_texture(preload("res://media/images/gui/ButtonSelectorRight.png"))
 		Sprites.SpriteActive[index+1] = true
-
 
 	for index in range(0, 1000):
 		if Sprites.SpriteActive[index] == true:
@@ -131,7 +123,6 @@ func _ready():
 	AboutTextsStartIndex = 0
 	AboutTextsEndIndex = 0
 
-
 	Sprites.SpriteImage[60].scale = Vector2(2.845, 1.0)
 	Sprites.SpriteImage[60].modulate = Color(1.0, 1.0, 1.0, 0.4)
 	
@@ -140,15 +131,12 @@ func _ready():
 
 	pass
 
-
 #----------------------------------------------------------------------------------------
 func MoveAllActiveSpritesOffScreen():
 	for index in range(1, 1000):
 		if Sprites.SpriteActive[index] == true:
 			Sprites.SpriteImage[index].global_position = Vector2(-9999, -9999)
-
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DrawSprite(var index, var x, var y, var scaleX, var scaleY, var rotation, var red, var green, var blue, var alpha):
@@ -170,7 +158,6 @@ func DrawSprite(var index, var x, var y, var scaleX, var scaleY, var rotation, v
 
 	pass
 
-
 #----------------------------------------------------------------------------------------
 func DeleteAllTexts():
 	var size = Texts.TextImage.size()
@@ -179,12 +166,10 @@ func DeleteAllTexts():
 	for index in range(size, 9, -1):
 		remove_child(Texts.TextImage[index])
 		Texts.TextImage.remove(index)
-#		Texts.TextImage[index].queue_free()
 
 	TextCurrentIndex = 10
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DrawnTextChangeScaleRotation(var index, var scaleX, var scaleY, var rotation):
@@ -192,7 +177,6 @@ func DrawnTextChangeScaleRotation(var index, var scaleX, var scaleY, var rotatio
 	Texts.TextImage[index].rect_rotation = rotation
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DrawText(var index, var text, var x, var y, var horizontalJustification, var fontSize, var scaleX, var scaleY, var rotation, var red, var green, var blue, var alpha, var outlineRed, var outlineGreen, var outlineBlue):
@@ -262,7 +246,6 @@ func DrawText(var index, var text, var x, var y, var horizontalJustification, va
 
 	pass
 
-
 #----------------------------------------------------------------------------------------
 func AddAboutScreenText(var text, var blue):
 	AboutTexts.AboutTextsText.append(text)
@@ -270,9 +253,7 @@ func AddAboutScreenText(var text, var blue):
 
 	AboutTextsEndIndex+=1
 
-
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func LoadAboutScreenTexts():
@@ -420,6 +401,4 @@ func LoadAboutScreenTexts():
 	Texts.TextImage[AboutTextsEndIndex-2].rect_global_position.y+=(ScreenHeight/2)
 	Texts.TextImage[AboutTextsEndIndex-1].rect_global_position.y+=(ScreenHeight/2)
 
-
 	pass
-

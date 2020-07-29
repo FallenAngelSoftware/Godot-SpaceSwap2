@@ -1,7 +1,6 @@
 # "AudioCore.gd"
 extends Node
 
-
 var MusicVolume
 var EffectsVolume
 
@@ -12,7 +11,7 @@ var MusicCurrentlyPlaying = -1
 var EffectPlayer = []
 var EffectsTotal = 12
 
-
+#----------------------------------------------------------------------------------------
 func _ready():
 	MusicVolume = 1.0
 	EffectsVolume = 1.0
@@ -51,24 +50,23 @@ func _ready():
 		add_child(EffectPlayer[index])
 		EffectPlayer[index].set_volume_db(linear2db(EffectsVolume))
 		EffectPlayer[index].stream.set_loop(false)
-
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func SetMusicAndEffectsVolume(var musicVolume, var effectsVolume):
 	for index in range(0, MusicTotal):
 		MusicPlayer[index].set_volume_db(linear2db(musicVolume))
 
 	for index in range(0, EffectsTotal):
 		EffectPlayer[index].set_volume_db(linear2db(effectsVolume))
-
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func PlayMusic(var index):
 	if index < 0 || index > (MusicTotal-1):  return
 
 	if MusicCurrentlyPlaying > -1:  MusicPlayer[MusicCurrentlyPlaying].stop()
+	
 	MusicCurrentlyPlaying = index
 	MusicPlayer[MusicCurrentlyPlaying].set_volume_db(linear2db(MusicVolume))
 	MusicPlayer[MusicCurrentlyPlaying].stream.set_loop(true)
@@ -76,7 +74,7 @@ func PlayMusic(var index):
 
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func PlayEffect(var index):
 	if index < 0 || index > (EffectsTotal-1):  return
 
@@ -86,9 +84,7 @@ func PlayEffect(var index):
 
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func _process(delta):
 
-
 	pass
-

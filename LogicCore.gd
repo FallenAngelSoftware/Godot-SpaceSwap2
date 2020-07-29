@@ -1,8 +1,6 @@
 # "LogicCore.gd"
 extends Node
 
-
-
 var Version = "Version 2 - Unplayable Alpha - Game Engine Testing"
 
 const ChildStoryMode				= 0
@@ -21,7 +19,7 @@ var StartingLevel
 var SecretCode = []
 var SecretCodeCombined = 0
 
-
+#----------------------------------------------------------------------------------------
 func _ready():
 	StartingLevelForGameMode.append(0)
 	StartingLevelForGameMode.append(0)
@@ -37,12 +35,9 @@ func _ready():
 	SecretCode.append(0)
 	SecretCode.append(0)
 
-
 	pass
 
-
+#----------------------------------------------------------------------------------------
 func _process(delta):
 
-
 	pass
-

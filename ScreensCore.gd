@@ -38,7 +38,6 @@ func _ready():
 	elif OS.get_name() == "HTML5":
 		OperatingSys = OSHTMLFive
 
-
 	pass
 
 #----------------------------------------------------------------------------------------
@@ -54,8 +53,6 @@ func ApplyScreenFadeTransition():
 		else:
 			ScreenFadeTransparency = 0.0
 			ScreenFadeStatus = FadingIdle
-
-#		print("Fade In:"+str(ScreenFadeTransparency))
 	elif ScreenFadeStatus == FadingToBlack:
 		if ScreenFadeTransparency < 0.75:
 			ScreenFadeTransparency+=0.25
@@ -70,12 +67,9 @@ func ApplyScreenFadeTransition():
 
 			ScreenToDisplay = ScreenToDisplayNext
 
-#		print("Fade Out:"+str(ScreenFadeTransparency))
-	
 	VisualsCore.Sprites.SpriteImage[0].modulate = Color(1.0, 1.0, 1.0, ScreenFadeTransparency)
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DisplayGodotScreen():
@@ -103,7 +97,6 @@ func DisplayGodotScreen():
 		ScreenToDisplayNext = FASScreen
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DisplayFASScreen():
@@ -175,6 +168,7 @@ func DisplayTitleScreen():
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 425, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 252, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 
 		var buttonY = 223
 		var buttonOffsetY = 41
@@ -221,7 +215,6 @@ func DisplayTitleScreen():
 		if OperatingSys == OSWindows:
 			get_tree().quit()
 		elif OperatingSys == OSHTMLFive:
-#			OS.shell_open("http://fallenangelsoftware.com")
 			JavaScript.eval("window.location.replace('http://www.fallenangelsoftware.com');")
 
 	if (LogicCore.SecretCodeCombined == 5432 || LogicCore.SecretCodeCombined == 5431):
@@ -239,7 +232,6 @@ func DisplayTitleScreen():
 #		ScreenToDisplayNext = TitleScreen
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DisplayOptionsScreen():
@@ -479,12 +471,7 @@ func DisplayOptionsScreen():
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
 		LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
 
-
-#		ScreenToDisplayNext = TitleScreen
-
-
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DisplayHowToPlayScreen():
@@ -523,7 +510,6 @@ func DisplayHowToPlayScreen():
 #		ScreenToDisplayNext = TitleScreen
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DisplayHighScoresScreen():
@@ -610,7 +596,6 @@ func DisplayHighScoresScreen():
 
 	pass
 
-
 #----------------------------------------------------------------------------------------
 func DisplayAboutScreen():
 	if ScreenFadeStatus == FadingFromBlack && ScreenFadeTransparency == 1.0:
@@ -634,7 +619,6 @@ func DisplayAboutScreen():
 #		ScreenToDisplayNext = TitleScreen
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func DisplayMusicTestScreen():
@@ -698,11 +682,9 @@ func DisplayMusicTestScreen():
 		ScreenFadeStatus = FadingToBlack
 
 	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:
-#		ScreenToDisplayNext = TitleScreen
 		if ScreenToDisplayNext == TitleScreen:  AudioCore.PlayMusic(0)
 
 	pass
-
 
 #----------------------------------------------------------------------------------------
 func ProcessScreenToDisplay():
@@ -724,10 +706,8 @@ func ProcessScreenToDisplay():
 	elif ScreenToDisplay == MusicTestScreen:
 		DisplayMusicTestScreen()
 
-
 	InterfaceCore.DrawAllButtons()
 	InterfaceCore.DrawAllArrowSets()
-
 
 	ApplyScreenFadeTransition()
 
