@@ -155,6 +155,12 @@ func DisplayTitleScreen():
 		VisualServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 		VisualsCore.DrawSprite(10, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+
+		if (AudioCore.MusicVolume == 0.0 && AudioCore.EffectsVolume == 0.0):
+			InterfaceCore.CreateIcon(110, 40, 40, " ")
+		else:
+			InterfaceCore.CreateIcon(111, 40, 40, " ")
+
 		VisualsCore.DrawSprite(20, VisualsCore.ScreenWidth/2, 82, 1.75, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 150, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
@@ -166,9 +172,7 @@ func DisplayTitleScreen():
 
 		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 425, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 290, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 252, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 434, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
 
 		var buttonY = 223
 		var buttonOffsetY = 41
@@ -189,11 +193,32 @@ func DisplayTitleScreen():
 			InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2), (buttonY))
 			buttonY+=buttonOffsetY
 
-		VisualsCore.DrawSprite(25, VisualsCore.ScreenWidth/2, 540, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		InterfaceCore.CreateIcon(115, VisualsCore.ScreenWidth/2, 540, " ")
+
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 602, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2021 By Team ''www.FallenAngelSoftware.com''", 0, 640-19, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		InterfaceCore.ArrowSetSelectedByKeyboardLast = -1
+
+	if InterfaceCore.ThisIconWasPressed(0) == true:
+		if (AudioCore.MusicVolume == 0.0 && AudioCore.EffectsVolume == 0.0):
+			AudioCore.MusicVolume = 1.0
+			AudioCore.EffectsVolume = 1.0
+			VisualsCore.Sprites.SpriteImage[110].global_position = Vector2(-99999, -99999)
+			InterfaceCore.Icons.IconSprite[0]  = 111
+		else:
+			AudioCore.MusicVolume = 0.0
+			AudioCore.EffectsVolume = 0.0
+			VisualsCore.Sprites.SpriteImage[111].global_position = Vector2(-99999, -99999)
+			InterfaceCore.Icons.IconSprite[0]  = 110
+
+		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
+		DataCore.SaveOptionsAndHighScores()
+	elif InterfaceCore.ThisIconWasPressed(1) == true:
+		if OperatingSys == OSWindows:
+			OS.shell_open("https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com")
+		elif OperatingSys == OSHTMLFive:
+			JavaScript.eval("window.location.replace('https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com');")
 
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = FASScreen
@@ -708,6 +733,7 @@ func ProcessScreenToDisplay():
 
 	InterfaceCore.DrawAllButtons()
 	InterfaceCore.DrawAllArrowSets()
+	InterfaceCore.DrawAllIcons()
 
 	ApplyScreenFadeTransition()
 

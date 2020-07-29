@@ -9,7 +9,7 @@ STATUS OF GAME ENGINE CORES: <br/>
 - 100% - AudioCore <br/>
 -  85% - DataCore <br/>
 -  75% - InputCore <br/>
--  50% - InterfaceCore <br/>
+-  75% - InterfaceCore <br/>
 -   5% - LogicCore <br/>
 -  75% - ScreensCore <br/>
 -  90% - VisualsCore <br/>

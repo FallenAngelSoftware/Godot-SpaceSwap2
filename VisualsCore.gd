@@ -106,10 +106,19 @@ func _ready():
 		Sprites.SpriteImage[index+1].set_texture(preload("res://media/images/gui/ButtonSelectorRight.png"))
 		Sprites.SpriteActive[index+1] = true
 
+	Sprites.SpriteImage[110].set_texture(preload("res://media/images/gui/SpeakerOFF.png"))
+	Sprites.SpriteActive[110] = true
+	Sprites.SpriteImage[111].set_texture(preload("res://media/images/gui/SpeakerON.png"))
+	Sprites.SpriteActive[111] = true
+	Sprites.SpriteImage[115].set_texture(preload("res://media/images/logos/GooglePlayLogo.png"))
+	Sprites.SpriteActive[115] = true
+
+
 	for index in range(0, 1000):
 		if Sprites.SpriteActive[index] == true:
 			add_child(Sprites.SpriteImage[index])
 			Sprites.SpriteImage[index].global_position = Vector2(Sprites.SpriteScreenX[index], Sprites.SpriteScreenY[index])
+#			Sprites.SpriteImage[index].set_offset(Vector2((Sprites.SpriteImage[index].get_width()/2), (Sprites.SpriteImage[index].get_height()/2)))
 
 	FontTTF.append(DynamicFont.new())
 	FontTTF[0].font_data = load("res://media/fonts/LiberationSans-Regular.ttf")

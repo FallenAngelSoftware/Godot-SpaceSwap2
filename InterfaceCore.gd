@@ -31,6 +31,18 @@ var NumberOfArrowSetsOnScreen
 var ArrowSetSelectedByKeyboard
 var ArrowSetSelectedByKeyboardLast
 
+class IconClass:
+	var IconIndex = []
+	var IconSprite = []
+	var IconScreenX = []
+	var IconScreenY = []
+	var IconAnimationTimer = []
+	var IconScale = []
+	var IconText = []
+var Icons = IconClass.new()
+
+var NumberOfIconsOnScreen
+
 #----------------------------------------------------------------------------------------
 func InitializeGUI(var createTexts):
 	Buttons.ButtonImageIndex.clear()
@@ -76,6 +88,17 @@ func InitializeGUI(var createTexts):
 
 	NumberOfArrowSetsOnScreen = 0
 	ArrowSetSelectedByKeyboard = 0
+	
+	for index in range(0, 20):
+		Icons.IconIndex.append(-1)
+		Icons.IconSprite.append(-1)
+		Icons.IconScreenX.append(-99999)
+		Icons.IconScreenY.append(-99999)
+		Icons.IconAnimationTimer.append(-1)
+		Icons.IconScale.append(1.0)
+		Icons.IconText.append(" ")
+
+	NumberOfIconsOnScreen = 0
 
 	pass
 
@@ -310,6 +333,72 @@ func ThisArrowWasPressed(var arrowToCheck):
 	pass
 
 #----------------------------------------------------------------------------------------
+func CreateIcon(var spriteIndex, var screenX, var screenY, var text):
+	Icons.IconIndex[NumberOfIconsOnScreen] = NumberOfIconsOnScreen
+	Icons.IconSprite[NumberOfIconsOnScreen] = spriteIndex
+	Icons.IconScreenX[NumberOfIconsOnScreen] = screenX
+	Icons.IconScreenY[NumberOfIconsOnScreen] = screenY
+	Icons.IconAnimationTimer[NumberOfIconsOnScreen] = -1
+	Icons.IconScale[NumberOfIconsOnScreen] = 1.0
+	Icons.IconText[NumberOfIconsOnScreen] = text
+
+	NumberOfIconsOnScreen+=1
+
+	pass
+
+#----------------------------------------------------------------------------------------
+func DrawAllIcons():
+	for index in range (0, NumberOfIconsOnScreen):
+		VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].global_position = Vector2(Icons.IconScreenX[index], Icons.IconScreenY[index])
+
+		if Icons.IconAnimationTimer[index] == 3:
+			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.85, 0.85)
+		elif Icons.IconAnimationTimer[index] == 2:
+			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.90, 0.90)
+		elif Icons.IconAnimationTimer[index] == 1:
+			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(0.95, 0.95)
+		elif Icons.IconAnimationTimer[index] == 0:
+			VisualsCore.Sprites.SpriteImage[Icons.IconSprite[index]].scale = Vector2(1.0, 1.0)
+	pass
+
+#----------------------------------------------------------------------------------------
+func ThisIconWasPressed(var iconToCheck):
+	var sprH
+	var sprW
+
+	if NumberOfIconsOnScreen == 0:  return false
+	
+	if Icons.IconAnimationTimer[iconToCheck] == 3:
+		Icons.IconAnimationTimer[iconToCheck]-=1
+	elif Icons.IconAnimationTimer[iconToCheck] == 2:
+		Icons.IconAnimationTimer[iconToCheck]-=1
+	elif Icons.IconAnimationTimer[iconToCheck] == 1:
+		Icons.IconAnimationTimer[iconToCheck]-=1
+	elif Icons.IconAnimationTimer[iconToCheck] == 0:
+		Icons.IconAnimationTimer[iconToCheck] = -1
+		return true
+	
+	if InputCore.DelayAllUserInput > 0:  return false
+
+#	for index in range (0, NumberOfIconsOnScreen):
+	if InputCore.MouseButtonLeftPressed == true:
+		sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
+		sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
+
+		if (iconToCheck == 1):
+			print(sprH)
+
+		if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
+			Icons.IconAnimationTimer[iconToCheck] = 3
+
+			AudioCore.PlayEffect(0)
+			InputCore.DelayAllUserInput = 30
+
+	return false
+
+	pass
+
+#----------------------------------------------------------------------------------------
 func DeleteAllGUI():
 	ButtonSelectedByKeyboard = 0
 
@@ -332,6 +421,17 @@ func DeleteAllGUI():
 		ArrowSets.ArrowSetRightScale[index] = 1.0
 
 	NumberOfArrowSetsOnScreen = 0
+
+	for index in range(0, NumberOfIconsOnScreen):
+		Icons.IconIndex[index] = -1
+		Icons.IconSprite[index] = -1
+		Icons.IconScreenX[index] = -99999
+		Icons.IconScreenY[index] = -99999
+		Icons.IconAnimationTimer[index] = -1
+		Icons.IconScale[index] = 1.0
+		Icons.IconText[index] = " "
+
+	NumberOfIconsOnScreen = 0
 
 	pass
 
