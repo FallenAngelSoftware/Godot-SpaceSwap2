@@ -81,7 +81,7 @@ func DisplayGodotScreen():
 
 		ScreenDisplayTimer = (200*2)
 
-	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)) && ScreenDisplayTimer > 1:
+	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true)) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
 		InputCore.DelayAllUserInput = 50
 
@@ -130,7 +130,7 @@ func DisplayFASScreen():
 
 		ScreenDisplayTimer = (750*2)
 
-	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)) && ScreenDisplayTimer > 1:
+	if (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true)) && ScreenDisplayTimer > 1:
 		ScreenDisplayTimer = 1
 		InputCore.DelayAllUserInput = 50
 
@@ -488,7 +488,6 @@ func DisplayOptionsScreen():
 		ScreenToDisplayNext = OptionsScreen
 		ScreenFadeStatus = FadingToBlack
 
-
 	if InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
@@ -633,11 +632,11 @@ func DisplayAboutScreen():
 		VisualsCore.Texts.TextImage[index].rect_global_position.y-=1.5 # 3
 
 	if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y != -99999: # BANDAID - FIX IT
-		if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45 || (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true)):
+		if VisualsCore.Texts.TextImage[VisualsCore.AboutTextsEndIndex-1].rect_global_position.y < -45 || (InputCore.DelayAllUserInput == -1 && (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true)):
 			ScreenToDisplayNext = TitleScreen
 			ScreenFadeStatus = FadingToBlack
 			
-			if InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true:  AudioCore.PlayEffect(1)
+			if (InputCore.MouseButtonLeftPressed == true || InputCore.KeyboardSpacebarPressed == true || InputCore.KeyboardEnterPressed == true):  AudioCore.PlayEffect(1)
 			InputCore.DelayAllUserInput = 30
 
 #	if ScreenFadeStatus == FadingToBlack && ScreenFadeTransparency == 0.5:

@@ -16,7 +16,6 @@ var Buttons = ButtonsClass.new()
 var NumberOfButtonsOnScreen
 var ButtonSelectedByKeyboard
 
-
 class ArrowSetsClass:
 	var ArrowSetIndex = []
 	var ArrowSetScreenY = []
@@ -200,7 +199,7 @@ func ThisButtonWasPressed(var buttonToCheck):
 
 				InputCore.DelayAllUserInput = 10
 
-			if InputCore.KeyboardEnterPressed == true:
+			if (InputCore.KeyboardEnterPressed == true || InputCore.KeyboardSpacebarPressed == true):
 				if buttonToCheck == ButtonSelectedByKeyboard:
 					Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
 					AudioCore.PlayEffect(1)
@@ -281,11 +280,9 @@ func ThisArrowWasPressed(var arrowToCheck):
 	if (arrowSetToCheck == arrowToCheck):
 		if ArrowSets.ArrowSetLeftAnimationTimer[(arrowSetToCheck*2)] > -1:
 			ArrowSets.ArrowSetLeftAnimationTimer[(arrowSetToCheck*2)]-=1
-#			print("AnimTimer="+str(ArrowSets.ArrowSetLeftAnimationTimer[(arrowSetToCheck*2)])+" / arrowSetToCheck="+str(arrowSetToCheck)+" / Check"+str(arrowToCheck))
 			if (ArrowSets.ArrowSetLeftAnimationTimer[(arrowSetToCheck*2)] == 0 && arrowToCheck == (arrowSetToCheck)):  return true
 		elif ArrowSets.ArrowSetRightAnimationTimer[(floor(arrowSetToCheck)*2)] > -1:
 			ArrowSets.ArrowSetRightAnimationTimer[(floor(arrowSetToCheck)*2)]-=1
-#			print("AnimTimer="+str(ArrowSets.ArrowSetRightAnimationTimer[(floor(arrowSetToCheck)*2)])+" / arrowSetToCheck="+str(floor(arrowSetToCheck))+" / Check"+str(arrowToCheck))
 			if (ArrowSets.ArrowSetRightAnimationTimer[(floor(arrowSetToCheck)*2)] == 0 && arrowToCheck == (arrowSetToCheck)):  return true
 
 	if InputCore.DelayAllUserInput > 0:  return false
@@ -316,7 +313,6 @@ func ThisArrowWasPressed(var arrowToCheck):
 		if ArrowSetSelectedByKeyboard > 0:
 			ArrowSetSelectedByKeyboard-=1
 		else:  ArrowSetSelectedByKeyboard = (NumberOfArrowSetsOnScreen-1)
-
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
 		AudioCore.PlayEffect(0)
@@ -325,7 +321,6 @@ func ThisArrowWasPressed(var arrowToCheck):
 		if ArrowSetSelectedByKeyboard < (NumberOfArrowSetsOnScreen-1):
 			ArrowSetSelectedByKeyboard+=1
 		else:  ArrowSetSelectedByKeyboard = 0
-
 		ArrowSetSelectedByKeyboardLast = ArrowSetSelectedByKeyboard
 		VisualsCore.Sprites.SpriteImage[60].global_position = Vector2((VisualsCore.ScreenWidth/2), ArrowSets.ArrowSetScreenY[ArrowSetSelectedByKeyboard])
 		AudioCore.PlayEffect(0)
@@ -380,13 +375,9 @@ func ThisIconWasPressed(var iconToCheck):
 	
 	if InputCore.DelayAllUserInput > 0:  return false
 
-#	for index in range (0, NumberOfIconsOnScreen):
 	if InputCore.MouseButtonLeftPressed == true:
 		sprH = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_height()/2)
 		sprW = (VisualsCore.Sprites.SpriteImage[Icons.IconSprite[iconToCheck]].texture.get_width()/2)
-
-		if (iconToCheck == 1):
-			print(sprH)
 
 		if (InputCore.MouseScreenY > (Icons.IconScreenY[iconToCheck]-sprH) && InputCore.MouseScreenY < (Icons.IconScreenY[iconToCheck]+sprH) && InputCore.MouseScreenX > (Icons.IconScreenX[iconToCheck]-sprW) && InputCore.MouseScreenX < (Icons.IconScreenX[iconToCheck]+sprW)):
 			Icons.IconAnimationTimer[iconToCheck] = 3
