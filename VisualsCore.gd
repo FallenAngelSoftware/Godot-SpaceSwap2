@@ -197,6 +197,8 @@ func DrawText(var index, var text, var x, var y, var horizontalJustification, va
 	elif fontSize == 60:
 		fontToUseIndex = 1
 
+	Texts.TextImage[index].rect_clip_content = false
+
 	Texts.TextImage[index].add_font_override("normal_font", FontTTF[fontToUseIndex])
 
 	Texts.TextImage[index].modulate = Color(red, green, blue, alpha)
