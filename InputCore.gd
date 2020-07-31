@@ -76,5 +76,11 @@ func _input(event):
 	elif event is InputEventMouseMotion:
 		MouseScreenX = event.position.x
 		MouseScreenY = event.position.y
-
+	
+	if ScreensCore.OperatingSys == ScreensCore.OSAndroid:
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				MouseButtonLeftPressed = true
+				MouseScreenX = event.position.x
+				MouseScreenY = event.position.y
 	pass

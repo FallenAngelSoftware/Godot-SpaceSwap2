@@ -23,6 +23,7 @@ var ScreenToDisplayNext
 
 const OSWindows				= 1
 const OSHTMLFive			= 2
+const OSAndroid				= 3
 var OperatingSys = 0
 
 #----------------------------------------------------------------------------------------
@@ -37,6 +38,8 @@ func _ready():
 		OperatingSys = OSWindows
 	elif OS.get_name() == "HTML5":
 		OperatingSys = OSHTMLFive
+	elif OS.get_name() == "Android":
+		OperatingSys = OSAndroid
 
 	pass
 
@@ -238,7 +241,7 @@ func DisplayTitleScreen():
 		ScreenFadeStatus = FadingToBlack
 	elif InterfaceCore.ThisButtonWasPressed(5) == true:
 		DataCore.SaveOptionsAndHighScores()
-		if OperatingSys == OSWindows:
+		if OperatingSys == OSWindows || OperatingSys == OSAndroid:
 			get_tree().quit()
 		elif OperatingSys == OSHTMLFive:
 			JavaScript.eval("window.location.replace('http://www.fallenangelsoftware.com');")

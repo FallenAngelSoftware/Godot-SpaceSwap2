@@ -387,6 +387,9 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''qeed''", 1.0)
 	AddAboutScreenText("''Calinou''", 1.0)
 	AddAboutScreenText("''Sosasees''", 1.0)
+	AddAboutScreenText("''ArRay_''", 1.0)
+	AddAboutScreenText("''blast007''", 1.0)
+
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
