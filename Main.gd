@@ -20,6 +20,8 @@ func _ready():
 
 	DataCore.LoadOptionsAndHighScores()
 
+#	get_tree().get_root().set_size_override(true,Vector2(0,0),Vector2(360,640))
+
 	pass
 
 #----------------------------------------------------------------------------------------

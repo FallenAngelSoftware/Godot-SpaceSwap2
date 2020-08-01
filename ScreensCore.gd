@@ -219,7 +219,7 @@ func DisplayTitleScreen():
 		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		DataCore.SaveOptionsAndHighScores()
 	elif InterfaceCore.ThisIconWasPressed(1) == true:
-		if OperatingSys == OSWindows:
+		if OperatingSys == OSWindows || OperatingSys == OSAndroid:
 			OS.shell_open("https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com")
 		elif OperatingSys == OSHTMLFive:
 			JavaScript.eval("window.location.replace('https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com');")

@@ -280,6 +280,9 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''Godot Game engine''", 1.0)
 	AddAboutScreenText("(www.GodotEngine.org)", 1.0)
 
+	AddAboutScreenText("''Godot Game engine'' Recommended By:", 0.0)
+	AddAboutScreenText("''Yuri S.''", 1.0)
+
 	AddAboutScreenText("Game Built On:", 0.0)
 	AddAboutScreenText("Genuine ''openSUSE Tumbleweed KDE 64Bit'' Linux", 1.0)
 	AddAboutScreenText("(www.openSUSE.org)", 1.0)
@@ -379,7 +382,7 @@ func LoadAboutScreenTexts():
 
 	AddAboutScreenText("Big Thank You To People Who Helped:", 0.0)
 	AddAboutScreenText("''TwistedTwigleg''", 1.0)
-	AddAboutScreenText("''Megalomaniak", 1.0)
+	AddAboutScreenText("''Megalomaniak''", 1.0)
 	AddAboutScreenText("''SIsilicon28''", 1.0)
 	AddAboutScreenText("''vimino''", 1.0)
 	AddAboutScreenText("(: ''PurpleConditioner'' :)", 1.0)
@@ -389,7 +392,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''Sosasees''", 1.0)
 	AddAboutScreenText("''ArRay_''", 1.0)
 	AddAboutScreenText("''blast007''", 1.0)
-
+	AddAboutScreenText("''fogobogo''", 1.0)
 
 	AddAboutScreenText(" ", 1.0)
 	AddAboutScreenText("''You!''", 1.0)
