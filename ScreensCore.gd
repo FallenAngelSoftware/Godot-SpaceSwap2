@@ -740,4 +740,12 @@ func ProcessScreenToDisplay():
 
 	ApplyScreenFadeTransition()
 
+	if (VisualsCore.DEBUG == false):
+		VisualsCore.FramesPerSecondText.rect_global_position.x = -9999
+	elif (VisualsCore.DEBUG == true):
+		VisualsCore.FramesPerSecondText.rect_global_position.x = (13)
+
+	VisualsCore.FramesPerSecondText.text = ("FPS="+str(Engine.get_frames_per_second()))
+
+
 	pass

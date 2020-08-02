@@ -2,6 +2,7 @@
 extends Node
 
 var DEBUG = true
+var FramesPerSecondText
 
 var ScreenWidth = 1024
 var ScreenHeight = 640
@@ -135,6 +136,24 @@ func _ready():
 	
 	DrawSprite(0, VisualsCore.ScreenWidth/2, VisualsCore.ScreenHeight/2, 2.845, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 	Sprites.SpriteImage[0].set_z_index(1000)
+
+	FramesPerSecondText = RichTextLabel.new()
+	add_child(FramesPerSecondText)
+	FramesPerSecondText.rect_clip_content = false
+	FramesPerSecondText.add_font_override("normal_font", FontTTF[0])
+	FramesPerSecondText.modulate = Color(1, 1, 1, 1)
+	FontTTF[0].outline_size = 3
+	FontTTF[0].outline_color = Color(0, 0, 0, 1)
+	FramesPerSecondText.text = ("FPS="+str(Engine.get_frames_per_second()))
+	var textWidth = FramesPerSecondText.get_font("normal_font").get_string_size(FramesPerSecondText.text).x
+	var textHeight = FramesPerSecondText.get_font("normal_font").get_string_size(FramesPerSecondText.text).y
+	FramesPerSecondText.rect_global_position.x = (13)
+	FramesPerSecondText.rect_global_position.y = (ScreenHeight-35)
+	FramesPerSecondText.set_size(Vector2(ScreenWidth, ScreenHeight), false)
+	FramesPerSecondText.rect_pivot_offset = Vector2((textWidth / 2), (textHeight / 2))
+	FramesPerSecondText.rect_scale = Vector2(1.0, 1.0)
+	FramesPerSecondText.rect_rotation = 0.0
+	FramesPerSecondText.ALIGN_LEFT
 
 	pass
 
