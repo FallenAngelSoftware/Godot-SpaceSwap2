@@ -5,7 +5,7 @@ var HighScoreName = []
 var HighScoreLevel = []
 var HighScoreScore = []
 
-const FILE_NAME = "user://game-data.json"
+const FILE_NAME = "user://SS2-game-data.json"
 
 #----------------------------------------------------------------------------------------
 func ClearHighScores():
@@ -74,6 +74,9 @@ func LoadOptionsAndHighScores():
 	HighScoreName = player.HighscoreNameValue
 	HighScoreLevel = player.HighScoreLevelValue
 	HighScoreScore = player.HighScoreScoreValue
+	LogicCore.SecretCode = player.SecretCode
+
+	LogicCore.SecretCodeCombined = (LogicCore.SecretCode[0]*1000)+(LogicCore.SecretCode[1]*100)+(LogicCore.SecretCode[2]*10)+(LogicCore.SecretCode[3]*1)
 
 	pass
 
@@ -92,7 +95,8 @@ func SaveOptionsAndHighScores():
 		"GameStartingLevel5Value": LogicCore.StartingLevelForGameMode[5],
 		"HighscoreNameValue": HighScoreName,
 		"HighScoreLevelValue": HighScoreLevel,
-		"HighScoreScoreValue": HighScoreScore
+		"HighScoreScoreValue": HighScoreScore,
+		"SecretCode": LogicCore.SecretCode
 	}
 
 	var file = File.new()
