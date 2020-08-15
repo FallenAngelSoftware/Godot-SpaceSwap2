@@ -24,14 +24,14 @@ func _ready():
 		elif index == 3:  MusicPlayer[index].stream = load("res://media/music/InGameStartBGM.ogg")
 		elif index == 4:  MusicPlayer[index].stream = load("res://media/music/InGameMiddleBGM.ogg")
 		elif index == 5:  MusicPlayer[index].stream = load("res://media/music/InGameEndBGM.ogg")
-		elif index == 6:  MusicPlayer[index].stream = load("res://media/music/InGameNeverEndBGM.ogg")
+		elif index == 6:  MusicPlayer[index].stream = load("res://media/music/TimeAttackBGM.ogg")
 		elif index == 7:  MusicPlayer[index].stream = load("res://media/music/NewHighScoreBGM.ogg")
 		elif index == 8:  MusicPlayer[index].stream = load("res://media/music/TopHighScoreBGM.ogg")
 		elif index == 9:  MusicPlayer[index].stream = load("res://media/music/Ending2BGM.ogg")
 		elif index == 10:  MusicPlayer[index].stream = load("res://media/music/WinTurbo3BGM.ogg")
 		add_child(MusicPlayer[index])
-#		MusicPlayer[index].set_volume_db(linear2db(MusicVolume))
-#		MusicPlayer[index].stream.set_loop(true)
+		MusicPlayer[index].set_volume_db(linear2db(MusicVolume))
+		MusicPlayer[index].stream.set_loop(true)
 
 	for index in range(0, EffectsTotal):
 		EffectPlayer.append(AudioStreamPlayer.new())
@@ -48,8 +48,8 @@ func _ready():
 		elif index == 10:  EffectPlayer[index].stream = load("res://media/sound/GameOver.ogg")
 		elif index == 11:  EffectPlayer[index].stream = load("res://media/sound/Explosion.ogg")
 		add_child(EffectPlayer[index])
-#		EffectPlayer[index].set_volume_db(linear2db(EffectsVolume))
-#		EffectPlayer[index].stream.set_loop(false)
+		EffectPlayer[index].set_volume_db(linear2db(EffectsVolume))
+		EffectPlayer[index].stream.set_loop(false)
 	pass
 
 #----------------------------------------------------------------------------------------
