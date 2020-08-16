@@ -54,6 +54,10 @@ var AboutTextsEndIndex
 
 #----------------------------------------------------------------------------------------
 func _ready():
+	if ScreensCore.OperatingSys == ScreensCore.OSAndroid:
+		ScreenWidth = 360
+		ScreenHeight = 640
+		
 	for index in range(0, 1000):
 		Sprites.SpriteImage.append(Sprite.new())
 		Sprites.SpriteActive.append(false)
@@ -153,7 +157,6 @@ func _ready():
 	FramesPerSecondText.rect_pivot_offset = Vector2((textWidth / 2), (textHeight / 2))
 	FramesPerSecondText.rect_scale = Vector2(1.0, 1.0)
 	FramesPerSecondText.rect_rotation = 0.0
-	FramesPerSecondText.ALIGN_LEFT
 
 	pass
 
@@ -242,17 +245,13 @@ func DrawText(var index, var text, var x, var y, var horizontalJustification, va
 	Texts.TextImage[index].rect_rotation = rotation
 
 	if horizontalJustification == 0:
-		Texts.TextImage[index].ALIGN_LEFT
+		Texts.TextImage[index].rect_global_position.x = x
 	elif horizontalJustification == 1:
-		Texts.TextImage[index].ALIGN_CENTER
 		Texts.TextImage[index].rect_global_position.x = ((VisualsCore.ScreenWidth/2) - (textWidth / 2))
 	elif horizontalJustification == 2:
-		Texts.TextImage[index].ALIGN_LEFT
 		Texts.TextImage[index].rect_global_position.x = (VisualsCore.ScreenWidth - x - (textWidth))
 	elif horizontalJustification == 4:
-		Texts.TextImage[index].ALIGN_LEFT
 		Texts.TextImage[index].rect_global_position.x = (x - (textWidth / 2))
-	else:  Texts.TextImage[index].ALIGN_FILL
 
 	Texts.TextIndex.append(index)
 	Texts.TextScreenX.append(x)
@@ -346,8 +345,9 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("''JeZxLee''", 1.0)
 
 	AddAboutScreenText("PNG Graphics Edited In:", 0.0)
-	AddAboutScreenText("''NeoPaint''", 1.0)
-	AddAboutScreenText("(www.NeoSoftware.com/NPW.html)", 1.0)
+	AddAboutScreenText("''PixelNEO''", 1.0)
+	AddAboutScreenText("(https://VisualNEO.com/product/pixelneo)", 1.0)
+	AddAboutScreenText("- Free Linux Alternative: ''Krita'' -", 1.0)
 
 	AddAboutScreenText("PNG Graphics Optimized Using:", 0.0)
 	AddAboutScreenText("''TinyPNG''", 1.0)
@@ -356,6 +356,7 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("OGG Audio Edited In:", 0.0)
 	AddAboutScreenText("''GoldWave''", 1.0)
 	AddAboutScreenText("(www.GoldWave.com)", 1.0)
+	AddAboutScreenText("- Free Linux Alternative: ''Audacity'' -", 1.0)
 
 	AddAboutScreenText("OGG Audio Optimized Using:", 0.0)
 	AddAboutScreenText("''OGGResizer''", 1.0)
@@ -365,28 +366,28 @@ func LoadAboutScreenTexts():
 	AddAboutScreenText("Genuine Microsoft Office 365 Publisher", 1.0)
 	AddAboutScreenText("(www.Office.com)", 1.0)
 
-#	AddAboutScreenText("Game Created On A:", 0.0)
-#	AddAboutScreenText("Hyper-Custom ''JeZxLee'' Pro-Built Desktop", 1.0)
-#	AddAboutScreenText("Desktop Code Name: ''Optimus Prime''", 1.0)
-#	AddAboutScreenText("Genuine ''openSUSE Tumbleweed KDE 64Bit'' Linux", 1.0)
-#	AddAboutScreenText("Corsair® 750watt Modular Power Supply", 1.0)
-#	AddAboutScreenText("GIGABYTE® GA-970A-DS3P 2.0 AM3+ Motherboard", 1.0)
-#	AddAboutScreenText("AMD® FX 3.5GHz(4GHz Turbo) 8-Core CPU", 1.0)
-#	AddAboutScreenText("Corsair® 32GB DDR3 RAM Memory", 1.0)
-#	AddAboutScreenText("nVidia® GeForce GTX 970TT 4GB GDDR5 GPU", 1.0)
-#	AddAboutScreenText("ADATA® 1TB SSD Hard Drive(OS/Apps)", 1.0)
-#	AddAboutScreenText("Western Digital® 1TB HDD Hard Drive(Personal Data)", 1.0)
 	AddAboutScreenText("Game Created On A:", 0.0)
 	AddAboutScreenText("Hyper-Custom ''JeZxLee'' Pro-Built Desktop", 1.0)
-	AddAboutScreenText("Desktop Code Name: ''JetFire''", 1.0)
-	AddAboutScreenText("Genuine ''openSUSE Tumbleweed K.D.E. 64Bit'' Linux", 1.0)
-	AddAboutScreenText("Thermaltake 500watt Power Supply", 1.0)
-	AddAboutScreenText("Gigabye B85M-HD3 Mid-Range Motherboard", 1.0)
-	AddAboutScreenText("Intel Core i5 3.0GHz(3.2GHz Turbo) 4-Core CPU", 1.0)
-	AddAboutScreenText("Corsair 16GB DDR3 RAM Memory", 1.0)
-	AddAboutScreenText("nVidia GeForce GTX 1050 Ti 4GB GDDR5 GPU", 1.0)
-	AddAboutScreenText("ADATA 1TB SSD Hard Drive(OS/Apps)", 1.0)
-	AddAboutScreenText("Western Digital 1TB HDD Hard Drive(Personal Data)", 1.0)
+	AddAboutScreenText("Desktop Code Name: ''Optimus Prime''", 1.0)
+	AddAboutScreenText("Genuine ''openSUSE Tumbleweed KDE 64Bit'' Linux", 1.0)
+	AddAboutScreenText("Corsair® 750watt Modular Power Supply", 1.0)
+	AddAboutScreenText("GIGABYTE® GA-970A-DS3P 2.0 AM3+ Motherboard", 1.0)
+	AddAboutScreenText("AMD® FX 3.5GHz(4GHz Turbo) 8-Core CPU", 1.0)
+	AddAboutScreenText("Corsair® 32GB DDR3 RAM Memory", 1.0)
+	AddAboutScreenText("nVidia® GeForce GTX 970TT 4GB GDDR5 GPU", 1.0)
+	AddAboutScreenText("ADATA® 1TB SSD Hard Drive(OS/Apps)", 1.0)
+	AddAboutScreenText("Western Digital® 1TB HDD Hard Drive(Personal Data)", 1.0)
+#	AddAboutScreenText("Game Created On A:", 0.0)
+#	AddAboutScreenText("Hyper-Custom ''JeZxLee'' Pro-Built Desktop", 1.0)
+#	AddAboutScreenText("Desktop Code Name: ''JetFire''", 1.0)
+#	AddAboutScreenText("Genuine ''openSUSE Tumbleweed K.D.E. 64Bit'' Linux", 1.0)
+#	AddAboutScreenText("Thermaltake 500watt Power Supply", 1.0)
+#	AddAboutScreenText("Gigabye B85M-HD3 Mid-Range Motherboard", 1.0)
+#	AddAboutScreenText("Intel Core i5 3.0GHz(3.2GHz Turbo) 4-Core CPU", 1.0)
+#	AddAboutScreenText("Corsair 16GB DDR3 RAM Memory", 1.0)
+#	AddAboutScreenText("nVidia GeForce GTX 1050 Ti 4GB GDDR5 GPU", 1.0)
+#	AddAboutScreenText("ADATA 1TB SSD Hard Drive(OS/Apps)", 1.0)
+#	AddAboutScreenText("Western Digital 1TB HDD Hard Drive(Personal Data)", 1.0)
 
 	AddAboutScreenText("HTML5 Version Tested On:", 0.0)
 	AddAboutScreenText("Genuine Windows® 10 Pro 64Bit", 1.0)

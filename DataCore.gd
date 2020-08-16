@@ -5,7 +5,7 @@ var HighScoreName = []
 var HighScoreLevel = []
 var HighScoreScore = []
 
-const FILE_NAME = "user://SS2-game-data.json"
+const FILE_NAME = "user://SS2a-game-data.json"
 
 #----------------------------------------------------------------------------------------
 func ClearHighScores():
@@ -65,12 +65,7 @@ func LoadOptionsAndHighScores():
 	AudioCore.EffectsVolume = player.EffectsVolumeValue
 	LogicCore.GameMode = player.GameModeValue
 	LogicCore.GameSpeed = player.GameSpeedValue
-	LogicCore.StartingLevelForGameMode[0] = player.GameStartingLevel0Value
-	LogicCore.StartingLevelForGameMode[1] = player.GameStartingLevel1Value
-	LogicCore.StartingLevelForGameMode[2] = player.GameStartingLevel2Value
-	LogicCore.StartingLevelForGameMode[3] = player.GameStartingLevel3Value
-	LogicCore.StartingLevelForGameMode[4] = player.GameStartingLevel4Value
-	LogicCore.StartingLevelForGameMode[5] = player.GameStartingLevel5Value
+	LogicCore.StartingLevelForGameMode = player.GameStartingLevel
 	HighScoreName = player.HighscoreNameValue
 	HighScoreLevel = player.HighScoreLevelValue
 	HighScoreScore = player.HighScoreScoreValue
@@ -87,12 +82,7 @@ func SaveOptionsAndHighScores():
 		"EffectsVolumeValue": AudioCore.EffectsVolume,
 		"GameModeValue": LogicCore.GameMode,
 		"GameSpeedValue": LogicCore.GameSpeed,
-		"GameStartingLevel0Value": LogicCore.StartingLevelForGameMode[0],
-		"GameStartingLevel1Value": LogicCore.StartingLevelForGameMode[1],
-		"GameStartingLevel2Value": LogicCore.StartingLevelForGameMode[2],
-		"GameStartingLevel3Value": LogicCore.StartingLevelForGameMode[3],
-		"GameStartingLevel4Value": LogicCore.StartingLevelForGameMode[4],
-		"GameStartingLevel5Value": LogicCore.StartingLevelForGameMode[5],
+		"GameStartingLevel": LogicCore.StartingLevelForGameMode,
 		"HighscoreNameValue": HighScoreName,
 		"HighScoreLevelValue": HighScoreLevel,
 		"HighScoreScoreValue": HighScoreScore,
