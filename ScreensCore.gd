@@ -110,7 +110,7 @@ func DisplayFASScreen():
 
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "''Space Swap™ 2''", 0, 16, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, LogicCore.Version, 0, 16+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2020 By Team ''www.FallenAngelSoftware.com''", 0, 16+(30*2), 1, 16+30+30, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2021 By Team ''www.FallenAngelSoftware.com''", 0, 16+(30*2), 1, 16+30+30, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 16+(30*3), 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
@@ -166,12 +166,12 @@ func DisplayTitleScreen():
 		else:
 			InterfaceCore.CreateIcon(111, 40, 40, " ")
 
-		VisualsCore.DrawSprite(20, VisualsCore.ScreenWidth/2, 82, 1.75, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		VisualsCore.DrawSprite(20, VisualsCore.ScreenWidth/2, 82, 1.5, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 150, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
 		var highScoreFullText
-		highScoreFullText= "#1 Top Player ''"+DataCore.HighScoreName[LogicCore.GameMode][0]+"'' Scored: "+str(DataCore.HighScoreScore[LogicCore.GameMode][0])
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(highScoreFullText), 0, 170, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+		highScoreFullText = "#1 Top Player ''"+DataCore.HighScoreName[LogicCore.GameMode][0]+"'' Scored: "+str(DataCore.HighScoreScore[LogicCore.GameMode][0])
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, str(highScoreFullText), 0, 170, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 194, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
@@ -516,14 +516,14 @@ func DisplayHowToPlayScreen():
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "H  O  W   T  O   P  L  A  Y:", 0, 12, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0)
 		VisualsCore.DrawSprite(30, VisualsCore.ScreenWidth/2, 30, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Objective is to keep pieces", 0, 75, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "from reaching the top.", 0, 75+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "As you play, new pieces", 0, 75+30+50, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "will appear at the bottom.", 0, 75+30+50+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Rearrange the pieces horizontally", 0, 75+30+50+30+50, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "into sets of 3 or more.", 0, 75+30+50+30+50+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "3 or more same pieces horizontally", 0, 75+30+50+30+50+30+50, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
-		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "or vertically will be cleared.", 0, 75+30+50+30+50+30+50+30, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Objective is to keep pieces", 0, 75, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "from reaching the top.", 0, 75+30, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "As you play, new pieces", 0, 75+30+50, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "will appear at the bottom.", 0, 75+30+50+30, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "Rearrange the pieces horizontally", 0, 75+30+50+30+50, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "into sets of 3 or more.", 0, 75+30+50+30+50+30, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "3 or more same pieces horizontally", 0, 75+30+50+30+50+30+50, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "or vertically will be cleared.", 0, 75+30+50+30+50+30+50+30, 1, 25, 2.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 390, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
@@ -558,11 +558,11 @@ func DisplayHighScoresScreen():
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 583, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
-		if VisualsCore.DEBUG == false:
+		if (LogicCore.SecretCodeCombined != 2777):
 			InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
-		elif VisualsCore.DEBUG == true:
+		else:
+			InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
 			InterfaceCore.CreateButton (7, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25-67)
-			InterfaceCore.CreateButton (6, (VisualsCore.ScreenWidth/2), VisualsCore.ScreenHeight-25)
 			InterfaceCore.ButtonSelectedByKeyboard = 1
 
 		if LogicCore.GameMode == LogicCore.ChildStoryMode:
@@ -618,11 +618,11 @@ func DisplayHighScoresScreen():
 		ScreenToDisplayNext = HighScoresScreen
 		ScreenFadeStatus = FadingToBlack
 
-	if InterfaceCore.ThisButtonWasPressed(0) == true:
+	if InterfaceCore.ThisButtonWasPressed(1) == true:
 		DataCore.ClearHighScores()
 		ScreenToDisplayNext = HighScoresScreen
 		ScreenFadeStatus = FadingToBlack
-	elif InterfaceCore.ThisButtonWasPressed(1) == true:
+	elif InterfaceCore.ThisButtonWasPressed(0) == true:
 		ScreenToDisplayNext = TitleScreen
 		ScreenFadeStatus = FadingToBlack
 
@@ -747,12 +747,11 @@ func ProcessScreenToDisplay():
 
 	ApplyScreenFadeTransition()
 
-	if (VisualsCore.DEBUG == false):
-		VisualsCore.FramesPerSecondText.rect_global_position.x = -9999
-	elif (VisualsCore.DEBUG == true):
+	if (LogicCore.SecretCodeCombined == 2777):
 		VisualsCore.FramesPerSecondText.rect_global_position.x = (13)
-
-	VisualsCore.FramesPerSecondText.text = ("FPS="+str(Engine.get_frames_per_second()))
+		VisualsCore.FramesPerSecondText.text = ("FPS="+str(Engine.get_frames_per_second()))
+	else:
+		VisualsCore.FramesPerSecondText.rect_global_position.x = -9999
 
 
 	pass

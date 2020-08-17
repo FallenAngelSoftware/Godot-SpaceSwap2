@@ -168,7 +168,7 @@ func DrawAllButtons():
 
 			VisualsCore.Sprites.SpriteImage[40+index].global_position = Vector2(Buttons.ButtonScreenX[index], Buttons.ButtonScreenY[index])
 
-			if index == ButtonSelectedByKeyboard && NumberOfButtonsOnScreen > 1:
+			if (index == ButtonSelectedByKeyboard && NumberOfButtonsOnScreen > 1 && ScreensCore.OperatingSys != ScreensCore.OSAndroid):
 				VisualsCore.Sprites.SpriteImage[50].global_position = Vector2((VisualsCore.ScreenWidth/2)-154, Buttons.ButtonScreenY[index])
 				VisualsCore.Sprites.SpriteImage[51].global_position = Vector2((VisualsCore.ScreenWidth/2)+154, Buttons.ButtonScreenY[index])
 
@@ -215,7 +215,11 @@ func ThisButtonWasPressed(var buttonToCheck):
 
 	if InputCore.MouseButtonLeftPressed == true:
 		for index in range (0, NumberOfButtonsOnScreen):
-			if InputCore.MouseScreenY > (Buttons.ButtonScreenY[index]-21) && InputCore.MouseScreenY < (Buttons.ButtonScreenY[index]+21) && InputCore.MouseScreenX > (Buttons.ButtonScreenX[index]-127) && InputCore.MouseScreenX < (Buttons.ButtonScreenX[index]+127):
+			var addVerticalMobile = 0
+			if ScreensCore.OperatingSys == ScreensCore.OSAndroid:
+				addVerticalMobile += 5
+
+			if InputCore.MouseScreenY > (Buttons.ButtonScreenY[index]-21-addVerticalMobile) && InputCore.MouseScreenY < (Buttons.ButtonScreenY[index]+21+addVerticalMobile) && InputCore.MouseScreenX > (Buttons.ButtonScreenX[index]-127) && InputCore.MouseScreenX < (Buttons.ButtonScreenX[index]+127):
 				ButtonSelectedByKeyboard = index
 				Buttons.ButtonAnimationTimer[ButtonSelectedByKeyboard] = 3
 				AudioCore.PlayEffect(1)
