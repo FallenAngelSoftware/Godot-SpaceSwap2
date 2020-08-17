@@ -41,7 +41,7 @@ func _ready():
 	elif OS.get_name() == "Android":
 		OperatingSys = OSAndroid
 
-#	OperatingSys = OSAndroid
+	OperatingSys = OSAndroid
 
 	pass
 

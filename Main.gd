@@ -18,9 +18,9 @@ extends Node
 func _ready():
 #	Engine.target_fps = 30
 
-	if ScreensCore.OperatingSys == ScreensCore.OSAndroid:
-		OS.set_window_size( Vector2(360.0, 640.0) )
-		get_viewport().set_size( Vector2 (360.0, 640.0) )
+#	if ScreensCore.OperatingSys == ScreensCore.OSAndroid:
+#		OS.set_window_size( Vector2(360.0, 640.0) )
+#		get_viewport().set_size( Vector2 (360.0, 640.0) )
 
 
 	DataCore.LoadOptionsAndHighScores()
