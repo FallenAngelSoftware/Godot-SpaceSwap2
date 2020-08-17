@@ -41,7 +41,7 @@ func _ready():
 	elif OS.get_name() == "Android":
 		OperatingSys = OSAndroid
 
-	OperatingSys = OSAndroid
+#	OperatingSys = OSAndroid
 
 	pass
 
@@ -175,13 +175,15 @@ func DisplayTitleScreen():
 
 		VisualsCore.DrawSprite(31, VisualsCore.ScreenWidth/2, 194, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 
-		VisualsCore.DrawSprite(13, 170, (VisualsCore.ScreenHeight/2)+70, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0)
+		if (OperatingSys == OSAndroid):
+			InterfaceCore.CreateIcon( 116, (VisualsCore.ScreenWidth/2)+345, (VisualsCore.ScreenHeight/2), " " )
+		else:
+			InterfaceCore.CreateIcon( 115, (VisualsCore.ScreenWidth/2)+345, (VisualsCore.ScreenHeight/2), " " )
 
-#		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 434, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
-#		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "XXXXXXXXXXXXXXXXX", 25, 300, 0, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 0.2, 0.0, 0.0, 0.0)
+		InterfaceCore.CreateIcon( 13, (VisualsCore.ScreenWidth/2)-345, (VisualsCore.ScreenHeight/2), " " )
 
-		var buttonY = 223
-		var buttonOffsetY = 41
+		var buttonY = 223+20
+		var buttonOffsetY = 58
 		InterfaceCore.CreateButton (0, (VisualsCore.ScreenWidth/2), (buttonY))
 		buttonY+=buttonOffsetY
 		InterfaceCore.CreateButton (1, (VisualsCore.ScreenWidth/2), (buttonY))
@@ -198,8 +200,6 @@ func DisplayTitleScreen():
 		if (LogicCore.SecretCodeCombined == 5432 || LogicCore.SecretCodeCombined == 5431):
 			InterfaceCore.CreateButton (8, (VisualsCore.ScreenWidth/2), (buttonY))
 			buttonY+=buttonOffsetY
-
-		InterfaceCore.CreateIcon(115, VisualsCore.ScreenWidth/2, 540, " ")
 
 		VisualsCore.DrawSprite(32, VisualsCore.ScreenWidth/2, 602, 2.85, 2.0, 0, 1.0, 1.0, 0.0, 1.0)
 		VisualsCore.DrawText(VisualsCore.TextCurrentIndex, "©2021 By Team ''www.FallenAngelSoftware.com''", 0, 640-19, 1, 25, 1.0, 1.0, 0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -221,6 +221,11 @@ func DisplayTitleScreen():
 		AudioCore.SetMusicAndEffectsVolume(AudioCore.MusicVolume, AudioCore.EffectsVolume)
 		DataCore.SaveOptionsAndHighScores()
 	elif InterfaceCore.ThisIconWasPressed(1) == true:
+		if OperatingSys == OSWindows || OperatingSys == OSAndroid:
+			OS.shell_open("https://play.google.com/store/apps/details?id=com.fallenangelsoftware.spaceswaptwo")
+		elif OperatingSys == OSHTMLFive:
+			JavaScript.eval("window.location.replace('https://play.google.com/store/apps/details?id=com.fallenangelsoftware.spaceswaptwo');")
+	elif InterfaceCore.ThisIconWasPressed(2) == true:
 		if OperatingSys == OSWindows || OperatingSys == OSAndroid:
 			OS.shell_open("https://play.google.com/store/apps/developer?id=FallenAngelSoftware.com")
 		elif OperatingSys == OSHTMLFive:

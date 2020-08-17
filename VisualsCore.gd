@@ -117,6 +117,8 @@ func _ready():
 	Sprites.SpriteActive[111] = true
 	Sprites.SpriteImage[115].set_texture(preload("res://media/images/logos/GooglePlayLogo.png"))
 	Sprites.SpriteActive[115] = true
+	Sprites.SpriteImage[116].set_texture(preload("res://media/images/logos/ReviewGooglePlayLogo.png"))
+	Sprites.SpriteActive[116] = true
 
 	for index in range(0, 1000):
 		if Sprites.SpriteActive[index] == true:
