@@ -20,7 +20,7 @@ http://fallenangelsoftware.com/stuff/files/SpaceSwap2/HTML5/index.html
 <br/>
 <br/>
 Click below to visit the official game webpage: <br/>
-http://fallenangelsoftware.com/GNX_Engine.html
+http://fallenangelsoftware.com/grand_national_gnx_engine.html
 <br/>
 <br/>
 Click below to visit the Godot engine website: <br/>
